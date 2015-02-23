@@ -20,7 +20,7 @@ CONTENTS                                               *vim-stardict-contents*
 
 
 ==============================================================================
-*1.INTRODUCTION*								   *vim-stardict-introduction*
+*1.INTRODUCTION*                                     *vim-stardict-introduction*
 
 *vim-stardict* is a Vim plugin that helps users lookup for meaning of words right
 inside Vim through *StarDict* *Command-Line* *Version* |SDCV|
@@ -35,7 +35,7 @@ course).
 
 
 ==============================================================================
-*2.INSTALL*												*vim-stardict-install*
+*2.INSTALL*                                               *vim-stardict-install*
 
 Before installing vim-stardict , the following applications need to be
 already installed in your computer:
@@ -58,7 +58,7 @@ There are several ways to install vim-stardict :
 
 
 ==============================================================================
-*3.USAGE*												  *vim-stardict-usage*
+*3.USAGE*                                                   *vim-stardict-usage*
 
 To lookup the meaning of a word with |no-space-in-between|:
 
@@ -82,7 +82,7 @@ To lookup the meaning of a word |under-the-cursor|:
 
 
 ==============================================================================
-*4.CONFIGURATION*								  *vim-stardict-configuration*
+*4.CONFIGURATION*                                   *vim-stardict-configuration*
 
 You can tweak the behavior of vim-stardict by setting a few variables in your
 |.vimrc| file. For example:
@@ -91,7 +91,7 @@ You can tweak the behavior of vim-stardict by setting a few variables in your
 	let g:stardict_split_horizontal = 1
 
 ------------------------------------------------------------------------------
-*4.1* *g:stardict_split_size*							 *stardict_split_size*
+*4.1* *g:stardict_split_size*                                *stardict_split_size*
 
 This is the size of the vim-stardict split. The value of g:stardict_split_size
 can be either a number or an empty string ''.
@@ -106,7 +106,7 @@ can be either a number or an empty string ''.
 Default: '' (empty string)
 
 ------------------------------------------------------------------------------
-*4.2* *g:stardict_split_horizontal*				   *stardict_split_horizontal*
+*4.2* *g:stardict_split_horizontal*                    *stardict_split_horizontal*
 
 This option specify whether to use a |:split| or a |:vsplit| for the
 vim-stardict split.
@@ -118,7 +118,7 @@ Default: 1
 
 
 ==============================================================================
-*5.MAPPINGS*									       *vim-stardict-mappings*
+*5.MAPPINGS*                                             *vim-stardict-mappings*
 
 To save some keystrokes, instead of typing in the many vim-stardict commands
 directly, you can map them into Vim keymappings:
@@ -128,11 +128,10 @@ directly, you can map them into Vim keymappings:
 
 
 ==============================================================================
-*6.LICENSE*										        *vim-stardict-license*
+*6.LICENSE*                                               *vim-stardict-license*
 
 Version: 0.1.0
-Author : Phong V. Cao <phongvcao@phongvcao.com>
-Documentation Author: Phong V. Cao <phongvcao@phongvcao.com>
+Author : Phong V. Cao <phongvcao@phongvcao.com> Documentation Author: Phong V. Cao <phongvcao@phongvcao.com>
 License: MIT license  {{{
     Permission is hereby granted, free of charge, to any person obtaining
     a copy of this software and associated documentation files (the
@@ -155,7 +154,7 @@ License: MIT license  {{{
 
 
 ==============================================================================
-*7.Credits*												*vim-stardict-credits*
+*7.Credits*                                               *vim-stardict-credits*
 
 I would like to say special thanks and appreciation for the ideas, codes and
 inspirations from the following developers. Without them, I would never be so
@@ -172,7 +171,7 @@ where it is supposed to be due.
 
 
 ==============================================================================
-*8.Bugs*										           *vim-stardict-bugs*
+*8.Bugs*                                                     *vim-stardict-bugs*
 
 If you find a bug please do not hesitate to post it on our Github issue
 tracker:
@@ -181,7 +180,7 @@ tracker:
 
 
 ==============================================================================
-*9.Contributing*								   *vim-stardict-contributing*
+*9.Contributing*                                     *vim-stardict-contributing*
 
 Think you can make this plugin better? Fork it on Github and send us a pull
 request:
@@ -190,7 +189,9 @@ request:
 
 
 ==============================================================================
-*10.Changelog*										  *vim-stardict-changelog*
+*10.Changelog*                                          *vim-stardict-changelog*
 
 |v0.1.0|:
 	* Initial stable release
+
+
