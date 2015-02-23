@@ -25,5 +25,5 @@
 
 
 augroup StarDictAutoCmd
-    autocmd BufWinEnter,BufNewFile,BufRead *.stardict set filetype=stardict
+    autocmd BufNewFile,BufRead *.stardict set filetype=stardict
 augroup END
