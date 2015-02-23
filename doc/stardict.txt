@@ -1,0 +1,196 @@
+*stardict.txt*	A Vim plugin for quick word-lookup using StarDict Command-Line
+	            Version (SDCV) dictionary program
+
+*Version:* *0.1.0* - Released on 02/23/2015
+
+
+==============================================================================
+CONTENTS                                               *vim-stardict-contents*
+
+	1. Introduction ....................... |vim-stardict-introduction|
+	2. Install ............................ |vim-stardict-install|
+	3. Usage ..............................	|vim-stardict-usage|
+	4. Configuration ......................	|vim-stardict-configuration|
+	5. Mappings ...........................	|vim-stardict-mappings|
+	6. License ............................	|vim-stardict-license|
+	7. Credits ............................ |vim-stardict-credits|
+	8. Bugs ............................... |vim-stardict-bugs|
+	9. Contributing ....................... |vim-stardict-contributing|
+   10. FAQ ................................ |vim-stardict-faq|
+
+
+==============================================================================
+*1.INTRODUCTION*								   *vim-stardict-introduction*
+
+*vim-stardict* is a Vim plugin that helps users lookup for meaning of words right
+inside Vim through *StarDict* *Command-Line* *Version* |SDCV|
+(http://sdcv.sourceforge.net/) - the console version of the popular |StarDict|
+program (http://www.stardict.org/).
+
+When the users invoke *vim-stardict* 's commands to search for words,
+*vim-stardict* opens either a |:vsplit| or |:split| and fill the buffer with
+well-highlighted and nicely-formatted definitions pulled out from the |StarDict|
+dictionaries located at |/usr/share/stardict/dic| (with the help of |SDCV|, of
+course).
+
+
+==============================================================================
+*2.INSTALL*												*vim-stardict-install*
+
+Before installing *vim-stardict* , the following applications need to be
+already installed in your computer:
+
+	* |SDCV| : http://sdcv.sourceforge.net/
+	* |Vim|  : http://www.vim.org/
+
+There are several ways to install *vim-stardict* :
+	* |Pathogen|:
+			git clone https://github.com/phongvcao/vim-stardict.git
+
+	* |NeoBundle|:
+			NeoBundle 'phongvcao/vim-stardict'
+
+	* |Vundle|:
+			Plugin 'phongvcao/vim-stardict'
+
+	* Manually copy all of the files into your |~/.vim| or
+	  |/usr/share/vim/vimfiles| directories
+
+
+==============================================================================
+*3.USAGE*												  *vim-stardict-usage*
+
+To lookup the meaning of a word with |no-space-in-between|:
+
+	:StarDict random_word_with_no_spaces
+
+To lookup the meaning of a word with |spaces-in-between|, put it inside
+quotation marks (both double and single quotes are acceptable):
+
+	:StarDict "random word with spaces"
+	:StarDict 'random word with spaces'
+
+To look up the meaning of several words (either |no-spaces-in-between| or
+|spaces-in-between|):
+
+	:StarDict first_word second_word "third word" 'fourth word'
+	:StarDict "first word" 'second word'
+
+To lookup the meaning of a word |under-the-cursor|:
+
+	:StarDictCursor
+
+
+==============================================================================
+*4.CONFIGURATION*								  *vim-stardict-configuration*
+
+You can tweak the behavior of *vim-stardict* by setting a few variables in your
+|.vimrc| file. For example:
+
+	let g:stardict_split_size = 20
+	let g:stardict_split_horizontal = 1
+
+------------------------------------------------------------------------------
+*4.1* *g:stardict_split_size*							 *stardict_split_size*
+
+This is the size of the *vim-stardict* split. The value of *g:stardict_split_size*
+can be either a number or an empty string ''.
+
+	* If a number is specified, the *vim-stardict* |:split| (or |:vsplit|) will
+	  have its |height| (or |width|) set accordingly to the number.
+
+	* If an emptry string (default value) is specified, the *vim-stardict*
+	  |:split| (or |:vsplit|) will occupy half of the current window's |height|
+	  (or |width|).
+
+Default: '' (empty string)
+
+------------------------------------------------------------------------------
+*4.2* *g:stardict_split_horizontal*				   *stardict_split_horizontal*
+
+This option specify whether to use a |:split| or a |:vsplit| for the
+*vim-stardict* split.
+
+	* If set to 1, *vim-stardict* will be opened in a |:split|
+	* If set to 0, *vim-stardict* will be opened in a |:vplit|
+
+Default: 1
+
+
+==============================================================================
+*5.MAPPINGS*									       *vim-stardict-mappings*
+
+To save some keystrokes, instead of typing in the many *vim-stardict* commands
+directly, you can map them into Vim keymappings:
+
+	nnoremap <leader>sw :StarDict<Space>    	" Ready for typing the word in
+	nnoremap <leader>sc :StarDictCursor<CR>     " Lookup the word under the cursor
+
+
+==============================================================================
+*6.LICENSE*										        *vim-stardict-license*
+
+Version: 0.1.0
+Author : Phong V. Cao <phongvcao@phongvcao.com>
+Documentation Author: Phong V. Cao <phongvcao@phongvcao.com>
+License: MIT license  {{{
+    Permission is hereby granted, free of charge, to any person obtaining
+    a copy of this software and associated documentation files (the
+    "Software"), to deal in the Software without restriction, including
+    without limitation the rights to use, copy, modify, merge, publish,
+    distribute, sublicense, and/or sell copies of the Software, and to
+    permit persons to whom the Software is furnished to do so, subject to
+    the following conditions:
+    The above copyright notice and this permission notice shall be included
+    in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+}}}
+
+
+==============================================================================
+*7.Credits*												*vim-stardict-credits*
+
+I would like to say special thanks and appreciation for the ideas, codes and
+inspirations from the following developers. Without them, I would never be so
+motivated (and have the idea/skeleton codes) to finish *vim-stardict* :
+
+	* Chu-Siang Lai <chusiang.lai@gmail.com>
+	* Yunt <http://my.opera.com/yunt/blog/show.dml/304842>
+
+Note: *vim-stardict* was actually started as a fork of |chusiang/vim-sdcv| on
+Github: https://github.com/chusiang/vim-sdcv, but due to so many extra codes and
+editation that I put in that I decided to go ahead and detach *vim-stardict* to a
+separate project instead of a fork. However, credits should still be due to
+where it is supposed to be due.
+
+
+==============================================================================
+*8.Bugs*										           *vim-stardict-bugs*
+
+If you find a bug please do not hesitate to post it on our Github issue
+tracker:
+
+	https://github.com/phongvcao/vim-stardict/issues/new
+
+
+==============================================================================
+*9.Contributing*								   *vim-stardict-contributing*
+
+Think you can make this plugin better? Fork it on Github and send us a pull
+request:
+
+	* |Github|: https://github.com/phongvcao/vim-stardict
+
+
+==============================================================================
+*10.Changelog*										  *vim-stardict-changelog*
+
+|v0.1.0|:
+	* Initial stable release
