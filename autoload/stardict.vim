@@ -26,12 +26,12 @@
 
 function! stardict#StarDict(...)
     let expl=system('sdcv -n ' . join(a:000, '\\ '))
-    silent! execute 'bd dict.stardict'
+    silent! execute 'bd vim-stardict'
 
     if (g:stardict_split_horizontal ==# 1)
-        silent! execute g:stardict_split_size . 'sp dict.stardict'
+        silent! execute g:stardict_split_size . 'sp vim-stardict'
     else
-        silent! execute g:stardict_split_size . 'vsp dict.stardict'
+        silent! execute g:stardict_split_size . 'vsp vim-stardict'
     endif
 
     setlocal buftype=nofile bufhidden=hide noswapfile readonly filetype=stardict
