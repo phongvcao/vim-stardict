@@ -1,5 +1,5 @@
 import re
-import subprocess
+from subprocess import Popen, PIPE
 
 
 def formatToBashStr(outputStr):
@@ -11,7 +11,10 @@ def formatToVimStr(outputStr):
 
 
 def getDefinition(argsList):
-    process = subprocess.Popen("\\ ".join(argsList))
+    argsList.insert(0, "-n")
+    argsList.insert(0, "sdcv")
+    (definition, error) = Popen(argsList, stdout=PIPE).communicate()
+    return definition
 
 
 def formatStr(outputStr):
