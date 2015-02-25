@@ -69,7 +69,7 @@ def getDefinition(argsListList, caller="vim"):
         # do echo "$(tput setaf $i)This is ($i) $(tput sgr0)";
         # done
         #
-        # http://stackoverflow.com/a/25692021#
+        # http://stackoverflow.com/a/25692021
         #
 
         nc = "\033[0m"
