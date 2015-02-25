@@ -89,7 +89,7 @@ def formatStr(outputStr):
     wordMeaningPattern = "^\\-\\s+.*"
     wordExamplePattern = "^\\=.*"
     wordMultiExamplesPattern = "^\\!.*"
-    wordPattern = "^\\@.*"
+    wordPattern = "^\@.*"
     dictNamePattern = "^\\-\\-\\>.*"
     finalStr = ""
 
@@ -111,7 +111,7 @@ def formatStr(outputStr):
             # Re-format WordExample
             replacedStr = re.sub("^\\=\\s*", "\\t- ", line,
                     flags=re.IGNORECASE)
-            replacedStr = re.sub("^\\+\\s*", ": ", replacedStr,
+            replacedStr = re.sub("\\+\\s*", ": ", replacedStr,
                     flags=re.IGNORECASE)
             finalStr += replacedStr
 
@@ -126,7 +126,7 @@ def formatStr(outputStr):
                 else:
                     replacedStr = re.sub("^\\-\\s+", str(replacedBullet) + ". ",
                             line, flags=re.IGNORECASE)
-                    ++replacedBullet
+                    replacedBullet += 1
             finalStr += replacedStr
 
         elif (re.match(wordPattern, line)):
