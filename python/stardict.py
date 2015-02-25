@@ -1,6 +1,15 @@
+#!/usr/bin/python
+
+import sys
 import locale
 import re
 from subprocess import Popen, PIPE
+
+
+def main():
+    argsList = [[]]
+    argsList[0] += sys.argv[1:]
+    sys.stdout.write(getDefinition(argsList, caller="bash"))
 
 
 def processArgsList(argsList):
@@ -38,10 +47,10 @@ def processArgsList(argsList):
     return finalArgsList
 
 
-def getDefinition(argsList, caller="vim"):
-    argsList[0].insert(0, "-n")
-    argsList[0].insert(0, "sdcv")
-    (definition, error) = Popen(processArgsList(argsList[0]),
+def getDefinition(argsListList, caller="vim"):
+    argsListList[0].insert(0, "-n")
+    argsListList[0].insert(0, "sdcv")
+    (definition, error) = Popen(processArgsList(argsListList[0]),
             stdout=PIPE).communicate()
     encoding = locale.getdefaultlocale()[1]
     definition = formatStr(definition.decode(encoding))
@@ -60,12 +69,16 @@ def getDefinition(argsList, caller="vim"):
         # do echo "$(tput setaf $i)This is ($i) $(tput sgr0)";
         # done
         #
-        preProcSubStr = "$(tput setaf 9)\\1$(tput sgr0)"        # 9
-        errorSubStr = "$(tput setaf 9)\\1$(tput srg0)"          # 9
-        statementSubStr = "$(tput setaf 2)\\1$(tput srg0)"      # 2
-        identifierSubStr = "$(tput setaf 4)\\1$(tput srg0)"     # 4
-        typeSubStr = "$(tput setaf 3)\\1$(tput srg0)"           # 3
-        underlinedSubStr = "$(tput setaf 13)\\1$(tput srg0)"    # 13
+        # http://stackoverflow.com/a/25692021#
+        #
+
+        nc = "\033[0m"
+        preProcSubStr = "\033[1;31m\\1" + nc       # 9
+        errorSubStr = "\033[1;31m\\1" + nc          # 9
+        statementSubStr = "\033[0;32m\\1" + nc      # 2
+        identifierSubStr = "\033[0;34m\\1" + nc     # 4
+        typeSubStr = "\033[0;33m\\1" + nc           # 3
+        underlinedSubStr = "\033[1;35m\\1" + nc    # 13
 
         finalStr = ""
         replacedStr = ""
@@ -113,6 +126,7 @@ def getDefinition(argsList, caller="vim"):
                 replacedStr = line
 
             finalStr += replacedStr
+            startLineCharIdx = endLineCharIdx
 
         return finalStr
 
@@ -211,3 +225,7 @@ def formatStr(outputStr):
         startLineCharIdx = endLineCharIdx
 
     return finalStr2
+
+
+if __name__ == "__main__":
+    main()
