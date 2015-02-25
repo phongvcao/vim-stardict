@@ -34,7 +34,7 @@ syntax match stardictResult "\v^[A-Z].*"
 syntax match stardictWord "\v^[a-z][^/]*"
 syntax match stardictWordType "\v^\*.*"
 syntax match stardictWordMeaning "\v^[0-9].*"
-syntax match stardictWordExample "\v^(\t\-\s.*\:|\!.*)"
+syntax match stardictWordExample "\v^(    \-\s.*\:|\!.*)"
 syntax match stardictDictName "\v^\@.*"
 
 highlight link stardictResult PreProc
