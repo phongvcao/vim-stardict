@@ -36,6 +36,10 @@ if !exists('g:stardict_split_horizontal')
     let g:stardict_split_horizontal = 1
 endif
 
+if !exists('g:stardict_prefer_python3')
+    let g:stardict_prefer_python3 = 1
+endif
+
 " TODO: stardict automatically searched all possible directories for stardict.vim to
 " source from
 augroup StarDictFileTypeDetect

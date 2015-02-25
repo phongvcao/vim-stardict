@@ -3,11 +3,46 @@ import re
 from subprocess import Popen, PIPE
 
 
+def processArgsList(argsList):
+    startArgPattern = "^(?:\\\"|\\').*"
+    endArgPattern = ".*(?:\\\"|\\')$"
+    finalArgsList = []
+    i = 0
+
+    while True:
+        startArgIdx = i
+
+        if (re.match(startArgPattern, argsList[i])):
+            # If the current element matches the startArgPattern,
+            # We keep incrementing i until being able to find
+            # endArgPattern, or until i == len(argsList)
+            while ((i < len(argsList)) and
+                    not(re.match(endArgPattern, argsList[i]))):
+                i += 1
+
+            endArgIdx = i
+            tempList = argsList[startArgIdx:endArgIdx + 1]
+
+            if (re.match(endArgPattern, argsList[i])):
+                finalArgsList.append(" ".join(tempList))
+            else:
+                finalArgsList += tempList
+
+        else:
+            finalArgsList.append(argsList[i])
+
+        i += 1
+        if (i >= len(argsList)):
+            break
+
+    return finalArgsList
+
+
 def getDefinition(argsList, caller="vim"):
     argsList[0].insert(0, "-n")
     argsList[0].insert(0, "sdcv")
-    print(argsList[0])
-    (definition, error) = Popen(argsList[0], stdout=PIPE).communicate()
+    (definition, error) = Popen(processArgsList(argsList[0]),
+            stdout=PIPE).communicate()
     encoding = locale.getdefaultlocale()[1]
     definition = formatStr(definition.decode(encoding))
 

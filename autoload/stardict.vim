@@ -29,9 +29,15 @@ let s:script_folder_path = escape(expand('<sfile>:p:h'), '\')
 
 
 function! s:SetPythonPath() abort
-    python3 import sys
-    python3 import vim
-    execute 'python3 sys.path.insert(0, "' . s:script_folder_path . '/../python")'
+    if has('python3')
+        python3 import sys
+        python3 import vim
+        execute 'python3 sys.path.insert(0, "' . s:script_folder_path . '/../python")'
+    elseif has('python')
+        python import sys
+        python import vim
+        execute 'python sys.path.insert(0, "' . s:script_folder_path . '/../python")'
+    endif
 
     return 1
 endfunction
@@ -60,18 +66,33 @@ function! stardict#GetDefinition(...)
     endif
 
     let l:argsStr = join(a:000, '\\ ')
-    python3 definition = GetDefinitionInner(vim.eval('a:000'))
-    let l:definition = py3eval('definition')
+
+    if has('python3')
+        python3 definition = GetDefinitionInner(vim.eval('a:000'))
+        let l:definition = py3eval('definition')
+    elseif has('python')
+        python definition = GetDefinitionInner(vim.eval('a:000'))
+        let l:definition = pyeval('definition')
+    endif
 
     return l:definition
 endfunction
 
+if (g:stardict_prefer_python3)
 python3 << EOF
 def GetDefinitionInner(argsStr):
     import stardict
 
     return stardict.getDefinition(argsStr)
 EOF
+else
+python << EOF
+def GetDefinitionInner(argsStr):
+    import stardict
+
+    return stardict.getDefinition(argsStr)
+EOF
+endif
 
 function! stardict#SourceSyntaxFile()
     let l:syntax_file_0 = '~/.vim/bundle/vim-stardict/syntax/stardict.vim'
