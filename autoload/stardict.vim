@@ -24,8 +24,22 @@
 "=============================================================================
 
 
+" This is for setting up PYTHONPATH
+let s:script_folder_path = escape(expand('<sfile>:p:h'), '\')
+
+
+function! s:SetPythonPath() abort
+    python3 import sys
+    python3 import vim
+    execute 'python3 sys.path.insert(0, "' . s:script_folder_path . '/../python")'
+
+    return 1
+endfunction
+
+
 function! stardict#StarDict(...)
-    let expl=system('sdcv -n ' . join(a:000, '\\ '))
+    " let expl=system('sdcv -n ' . join(a:000, '\\ '))
+    let expl=stardict#GetDefinition(a:000)
     silent! execute 'bd vim-stardict'
 
     if (g:stardict_split_horizontal ==# 1)
@@ -38,14 +52,35 @@ function! stardict#StarDict(...)
     silent! 1s/^/\=expl/
     1
 
-    call stardict#FormatBuffer()
+    " call stardict#FormatBuffer()
 endfunction
 
 
+function! stardict#GetDefinition(...)
+    if s:SetPythonPath() != 1
+        return "Cannot set ${PATH} variable!"
+    endif
+
+    let l:argsStr = join(a:000, '\\ ')
+    python3 definition = GetDefinitionInner(vim.eval('a:000'))
+    let l:definition = py3eval('definition')
+
+    return l:definition
+endfunction
+
+python3 << EOF
+def GetDefinitionInner(argsStr):
+    import stardict
+
+
+
+    return stardict.getDefinition(argsStr)
+EOF
+
 function! stardict#SourceSyntaxFile()
-    let l:syntax_file_0 = '/usr/share/vim/vimfiles/syntax/stardict.vim'
+    let l:syntax_file_0 = '~/.vim/bundle/vim-stardict/syntax/stardict.vim'
     let l:syntax_file_1 = '~/.vim/plugin/syntax/stardict.vim'
-    let l:syntax_file_2 = '~/.vim/bundle/stardict.vim/syntax/stardict.vim'
+    let l:syntax_file_2 = '/usr/share/vim/vimfiles/syntax/stardict.vim'
 
     if filereadable(expand(l:syntax_file_0))
         silent! execute 'source ' . l:syntax_file_0
@@ -58,12 +93,13 @@ function! stardict#SourceSyntaxFile()
     elseif filereadable(expand(l:syntax_file_2))
         silent! execute 'source ' . l:syntax_file_2
         let g:stardict_syntax_file = l:syntax_file_2
-
     endif
 endfunction
 
 
-function! stardict#FormatBuffer()
+
+" TODO: This function must be removed later
+function! stardict#FormatBuffer0()
     let l:replaced_bullet = 1
     let l:replaced_str = ''
     let l:line_num = 1

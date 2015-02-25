@@ -1,12 +1,15 @@
+import locale
 import re
 from subprocess import Popen, PIPE
 
 
 def getDefinition(argsList, caller="vim"):
-    argsList.insert(0, "-n")
-    argsList.insert(0, "sdcv")
-    (definition, error) = Popen(argsList, stdout=PIPE).communicate()
-    definition = formatStr(definition)
+    argsList[0].insert(0, "-n")
+    argsList[0].insert(0, "sdcv")
+    print(argsList[0])
+    (definition, error) = Popen(argsList[0], stdout=PIPE).communicate()
+    encoding = locale.getdefaultlocale()[1]
+    definition = formatStr(definition.decode(encoding))
 
     if (caller == "bash"):
         stardictResult = "[A-Z].*"
@@ -22,12 +25,12 @@ def getDefinition(argsList, caller="vim"):
         # do echo "$(tput setaf $i)This is ($i) $(tput sgr0)";
         # done
         #
-        preProcColorCode = "$(tput setaf 9)\\1$(tput sgr0)"        # 9
-        errorColorCode = "$(tput setaf 9)\\1$(tput srg0)"          # 9
-        statementColorCode = "$(tput setaf 2)\\1$(tput srg0)"      # 2
-        identifierColorCode = "$(tput setaf 4)\\1$(tput srg0)"     # 4
-        typeColorCode = "$(tput setaf 3)\\1$(tput srg0)"           # 3
-        underlinedColorCode = "$(tput setaf 13)\\1$(tput srg0)"    # 13
+        preProcSubStr = "$(tput setaf 9)\\1$(tput sgr0)"        # 9
+        errorSubStr = "$(tput setaf 9)\\1$(tput srg0)"          # 9
+        statementSubStr = "$(tput setaf 2)\\1$(tput srg0)"      # 2
+        identifierSubStr = "$(tput setaf 4)\\1$(tput srg0)"     # 4
+        typeSubStr = "$(tput setaf 3)\\1$(tput srg0)"           # 3
+        underlinedSubStr = "$(tput setaf 13)\\1$(tput srg0)"    # 13
 
         finalStr = ""
         replacedStr = ""
@@ -45,32 +48,32 @@ def getDefinition(argsList, caller="vim"):
             if (re.match("^" + stardictResult, line)):
                 # Re-format stardictResult
                 replacedStr = re.sub("^(" + stardictResult + ")",
-                        preProcColorCode, line, flags=re.IGNORECASE)
+                        preProcSubStr, line, flags=re.IGNORECASE)
 
             elif (re.match("^" + stardictWord, line)):
                 # Re-format stardictWord
-                replacedStr = re.sub("^(" + stardictWord + ")", errorColorCode,
+                replacedStr = re.sub("^(" + stardictWord + ")", errorSubStr,
                         line, flags=re.IGNORECASE)
 
             elif (re.match("^" + stardictWordType, line)):
                 # Re-format stardictWordType
                 replacedStr = re.sub("^(" + stardictWordType + ")",
-                        statementColorCode, line, flags=re.IGNORECASE)
+                        statementSubStr, line, flags=re.IGNORECASE)
 
             elif (re.match("^" + stardictWordMeaning, line)):
                 # Re-format stardictWordMeaning
                 replacedStr = re.sub("^(" + stardictWordMeaning + ")",
-                        identifierColorCode, line, flags=re.IGNORECASE)
+                        identifierSubStr, line, flags=re.IGNORECASE)
 
             elif (re.match("^" + stardictWordExample, line)):
                 # Re-format stardictWordExample
                 replacedStr = re.sub("^(" + stardictWordExample + ")",
-                        typeColorCode, line, flags=re.IGNORECASE)
+                        typeSubStr, line, flags=re.IGNORECASE)
 
             elif (re.match("^" + stardictDictName, line)):
                 # Re-format stardictDictName
                 replacedStr = re.sub("^(" + stardictDictName + ")",
-                        underlinedColorCode, line, flags=re.IGNORECASE)
+                        underlinedSubStr, line, flags=re.IGNORECASE)
             else:
                 replacedStr = line
 
@@ -121,7 +124,7 @@ def formatStr(outputStr):
                     replacedStr = re.sub("^\\-", "\\t\\t-", line,
                             flags=re.IGNORECASE)
                 else:
-                    replacedStr = re.sub("^\\-\\s+", replacedBullet + ". ",
+                    replacedStr = re.sub("^\\-\\s+", str(replacedBullet) + ". ",
                             line, flags=re.IGNORECASE)
                     ++replacedBullet
             finalStr += replacedStr

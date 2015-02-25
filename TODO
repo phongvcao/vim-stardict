@@ -1,3 +1,4 @@
+- Add support for Windows
 - Implement word lookup in Visual Mode (look up the selected text)
 - Once opened under :StarDictCursor mode, whenever the mouse move to a new word,
 vim-stardict automatically looks up for that word (let g:stardict_lookup_on_mousemove)
