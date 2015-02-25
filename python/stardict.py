@@ -73,12 +73,12 @@ def getDefinition(argsListList, caller="vim"):
         #
 
         nc = "\033[0m"
-        preProcSubStr = "\033[1;31m\\1" + nc       # 9
+        preProcSubStr = "\033[0;91m\\1" + nc       # 9
         errorSubStr = "\033[1;31m\\1" + nc          # 9
         statementSubStr = "\033[0;32m\\1" + nc      # 2
         identifierSubStr = "\033[0;34m\\1" + nc     # 4
         typeSubStr = "\033[0;33m\\1" + nc           # 3
-        underlinedSubStr = "\033[1;35m\\1" + nc    # 13
+        underlinedSubStr = "\033[0;95m\\1" + nc    # 13
 
         finalStr = ""
         replacedStr = ""
