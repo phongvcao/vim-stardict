@@ -1,6 +1,7 @@
 # vim-stardict
 
-Project maintained by [Phong V. Cao](http://phongvcao.com/)
+Project maintained by <a href="http://phongvcao.com/" target="_blank">Phong V.
+Cao</a>
 
 A Vim plugin for looking up meaning of words inside Vim and Bash using the
 **StarDict Command-Line Version (SDCV)** dictionary program.
