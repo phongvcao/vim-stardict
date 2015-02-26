@@ -42,10 +42,10 @@ endif
 
 " TODO: bsdcv automatically searched all possible directories for bsdcv.vim to
 " source from
-augroup BSdcvFileTypeDetect
+augroup BSDCVFileTypeDetect
     autocmd! Syntax bsdcv call bsdcv#SourceSyntaxFile()
 augroup END
 
-" Map vimbsdcv#bsdcv command to BSdcv() function
-command! -nargs=* BSdcv call bsdcv#BSdcv(<f-args>)
-command! -nargs=* BSdcvCursor call bsdcv#BSdcv(expand('<cword>'))
+" Map vimbsdcv#bsdcv command to BSDCV() function
+command! -nargs=* BSDCV call bsdcv#BSDCV(<f-args>)
+command! -nargs=* BSDCVCursor call bsdcv#BSDCV(expand('<cword>'))

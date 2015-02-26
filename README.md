@@ -18,7 +18,7 @@ Lookup word under cursor (using :split)
 --------------
 ![:split mode of BeautifySDCV](http://www.mediafire.com/convkey/bc14/a6nv3auv11g61226g.jpg)
 
-Lookup word using :BSdcv command (using :vsplit)
+Lookup word using :BSDCV command (using :vsplit)
 ---------------
 ![:vsplit mode of BeautifySDCV](http://www.mediafire.com/convkey/3ef1/js0cp9p475fse5q6g.jpg)
 
@@ -53,23 +53,23 @@ Usage
 
 To lookup the meaning of a word with no-space-in-between:
 
-	:BSdcv random_word_with_no_spaces
+	:BSDCV random_word_with_no_spaces
 
 To lookup the meaning of a word with spaces-in-between, put it inside
 quotation marks (both double and single quotes are acceptable):
 
-	:BSdcv "random word with spaces"
-	:BSdcv 'random word with spaces'
+	:BSDCV "random word with spaces"
+	:BSDCV 'random word with spaces'
 
 To look up the meaning of several words (either no-spaces-in-between or
 spaces-in-between):
 
-	:BSdcv first_word second_word "third word" 'fourth word'
-	:BSdcv "first word" 'second word'
+	:BSDCV first_word second_word "third word" 'fourth word'
+	:BSDCV "first word" 'second word'
 
 To lookup the meaning of a word under-the-cursor:
 
-	:BSdcvCursor
+	:BSDCVCursor
 
 Configuration
 =============
@@ -85,8 +85,8 @@ Sample configuration for you `.vimrc` (more in the official documentation)
 	let g:bsdcv_split_size = 20
 
     " Map BeautifySDCV's commands
-    nnoremap <leader>sw :BSdcv<Space>	    " Ready for typing the word in
-	nnoremap <leader>sc :BSdcvCursor<CR>     " Lookup the word under the cursor
+    nnoremap <leader>sw :BSDCV<Space>	    " Ready for typing the word in
+	nnoremap <leader>sc :BSDCVCursor<CR>     " Lookup the word under the cursor
 ```
 
 Credits

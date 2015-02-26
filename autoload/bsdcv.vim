@@ -43,7 +43,7 @@ function! s:SetPythonPath() abort
 endfunction
 
 
-function! bsdcv#BSdcv(...)
+function! bsdcv#BSDCV(...)
     let l:expl=bsdcv#GetDefinition(a:000)
     bufdo if (&filetype ==# 'bsdcv') | let l:cur_file_name=expand('%') | endif
 
