@@ -102,7 +102,7 @@ To view the meaning of word in Vim from Bash:
 Configuration
 =============
 
-## Vim:
+## 1. For Vim:
 Sample configuration for your `.vimrc` (more in the official documentation)
 
 ```vim
@@ -122,7 +122,7 @@ Sample configuration for your `.vimrc` (more in the official documentation)
 	nnoremap <leader>sc :StarDictCursor<CR>     " Lookup the word under the cursor
 ```
 
-## Bash:
+## 2. For Bash:
 Sample configuration for your `.bashrc` (more in the official documentation)
 
 ```bash
@@ -141,7 +141,6 @@ For the above configuration, you can issue these commands to find meaning of
 words:
 
 	whatis first_word second_word "third word" 'fourth word'
-
 	whatvim first_word second_word "third word" 'fourth word'
 
 
