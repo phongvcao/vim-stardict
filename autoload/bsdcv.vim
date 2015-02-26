@@ -1,5 +1,5 @@
 "=============================================================================
-" FILE: autoload/stardict.vim
+" FILE: autoload/bsdcv.vim
 " AUTHOR: Phong V. Cao <phongvcao@phongvcao.com>
 " License: MIT license {{{
 " Permission is hereby granted, free of charge, to any person obtaining
@@ -43,28 +43,28 @@ function! s:SetPythonPath() abort
 endfunction
 
 
-function! stardict#StarDict(...)
-    let l:expl=stardict#GetDefinition(a:000)
-    bufdo if (&filetype ==# 'stardict') | let l:cur_file_name=expand('%') | endif
+function! bsdcv#BSdcv(...)
+    let l:expl=bsdcv#GetDefinition(a:000)
+    bufdo if (&filetype ==# 'bsdcv') | let l:cur_file_name=expand('%') | endif
 
     if exists('l:cur_file_name')
         silent! execute 'bd ' . l:cur_file_name
     endif
 
-    if (g:stardict_split_horizontal ==# 1)
-        silent! execute g:stardict_split_size . 'sp vim-stardict.vim'
+    if (g:bsdcv_split_horizontal ==# 1)
+        silent! execute g:bsdcv_split_size . 'sp bsdcv'
     else
-        silent! execute g:stardict_split_size . 'vsp vim-stardict.vim'
+        silent! execute g:bsdcv_split_size . 'vsp bsdcv'
     endif
 
-    setlocal buftype=nofile bufhidden=hide noswapfile readonly filetype=stardict
+    setlocal buftype=nofile bufhidden=hide noswapfile readonly filetype=bsdcv
     silent! 1s/^/\=l:expl/
     1
 
 endfunction
 
 
-function! stardict#GetDefinition(...)
+function! bsdcv#GetDefinition(...)
     if s:SetPythonPath() != 1
         return "Cannot set ${PATH} variable!"
     endif
@@ -82,37 +82,37 @@ function! stardict#GetDefinition(...)
     return l:definition
 endfunction
 
-if (g:stardict_prefer_python3)
+if (g:bsdcv_prefer_python3)
 python3 << EOF
 def GetDefinitionInner(argsStr):
-    import stardict
+    import bsdcv
 
-    return stardict.getDefinition(argsStr)
+    return bsdcv.getDefinition(argsStr)
 EOF
 else
 python << EOF
 def GetDefinitionInner(argsStr):
-    import stardict
+    import bsdcv
 
-    return stardict.getDefinition(argsStr)
+    return bsdcv.getDefinition(argsStr)
 EOF
 endif
 
-function! stardict#SourceSyntaxFile()
-    let l:syntax_file_0 = '~/.vim/bundle/vim-stardict/syntax/stardict.vim'
-    let l:syntax_file_1 = '~/.vim/plugin/syntax/stardict.vim'
-    let l:syntax_file_2 = '/usr/share/vim/vimfiles/syntax/stardict.vim'
+function! bsdcv#SourceSyntaxFile()
+    let l:syntax_file_0 = '~/.vim/bundle/bsdcv/syntax/bsdcv.vim'
+    let l:syntax_file_1 = '~/.vim/plugin/syntax/bsdcv.vim'
+    let l:syntax_file_2 = '/usr/share/vim/vimfiles/syntax/bsdcv.vim'
 
     if filereadable(expand(l:syntax_file_0))
         silent! execute 'source ' . l:syntax_file_0
-        let g:stardict_syntax_file = l:syntax_file_0
+        let g:bsdcv_syntax_file = l:syntax_file_0
 
     elseif filereadable(expand(l:syntax_file_1))
         silent! execute 'source ' . l:syntax_file_1
-        let g:stardict_syntax_file = l:syntax_file_1
+        let g:bsdcv_syntax_file = l:syntax_file_1
 
     elseif filereadable(expand(l:syntax_file_2))
         silent! execute 'source ' . l:syntax_file_2
-        let g:stardict_syntax_file = l:syntax_file_2
+        let g:bsdcv_syntax_file = l:syntax_file_2
     endif
 endfunction

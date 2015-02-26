@@ -1,5 +1,5 @@
 "=============================================================================
-" FILE: plugin/stardict.vim
+" FILE: autoload/bsdcv.vim
 " AUTHOR: Phong V. Cao <phongvcao@phongvcao.com>
 " License: MIT license {{{
 " Permission is hereby granted, free of charge, to any person obtaining
@@ -24,28 +24,22 @@
 "=============================================================================
 
 
-if exists('g:loaded_stardict')
+if exists("b:current_syntax")
     finish
 endif
 
-if !exists('g:stardict_split_size')
-    let g:stardict_split_size = ''
-endif
+let b:current_syntax = "bsdcv"
 
-if !exists('g:stardict_split_horizontal')
-    let g:stardict_split_horizontal = 1
-endif
+syntax match bsdcvResult "\v^[A-Z].*"
+syntax match bsdcvWord "\v^\@.*"
+syntax match bsdcvWordType "\v^\*.*"
+syntax match bsdcvWordMeaning "\v^[0-9].*"
+syntax match bsdcvWordExample "\v^(    \-\s.*\:|\!.*)"
+syntax match bsdcvDictName "\v^\@[^/]*\:[^/]*"
 
-if !exists('g:stardict_prefer_python3')
-    let g:stardict_prefer_python3 = 1
-endif
-
-" TODO: stardict automatically searched all possible directories for stardict.vim to
-" source from
-augroup StarDictFileTypeDetect
-    autocmd! Syntax stardict call stardict#SourceSyntaxFile()
-augroup END
-
-" Map vimstardict#StarDict command to StarDict() function
-command! -nargs=* StarDict call stardict#StarDict(<f-args>)
-command! -nargs=* StarDictCursor call stardict#StarDict(expand('<cword>'))
+highlight link bsdcvResult Special
+highlight link bsdcvWord PreProc
+highlight link bsdcvWordType Statement
+highlight link bsdcvWordMeaning Identifier
+highlight link bsdcvWordExample Type
+highlight link bsdcvDictName Underlined
