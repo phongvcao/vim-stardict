@@ -44,8 +44,12 @@ endfunction
 
 
 function! stardict#StarDict(...)
-    let expl=stardict#GetDefinition(a:000)
-    silent! execute 'bd vim-stardict.vim'
+    let l:expl=stardict#GetDefinition(a:000)
+    bufdo if (&filetype ==# 'stardict') | let l:cur_file_name=expand('%') | endif
+
+    if exists('l:cur_file_name')
+        silent! execute 'bd ' . l:cur_file_name
+    endif
 
     if (g:stardict_split_horizontal ==# 1)
         silent! execute g:stardict_split_size . 'sp vim-stardict.vim'
@@ -54,7 +58,7 @@ function! stardict#StarDict(...)
     endif
 
     setlocal buftype=nofile bufhidden=hide noswapfile readonly filetype=stardict
-    silent! 1s/^/\=expl/
+    silent! 1s/^/\=l:expl/
     1
 
 endfunction
