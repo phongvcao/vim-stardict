@@ -1,7 +1,7 @@
 *stardict.txt*	A Vim plugin for quick word-lookup using StarDict Command-Line
 	            Version (SDCV) dictionary program
 
-*Version:* *0.1.0* - Released on 02/23/2015
+*Version:* *0.2.0* - Released on 02/26/2015
 
 
 ==============================================================================
@@ -60,6 +60,9 @@ There are several ways to install vim-stardict :
 ==============================================================================
 *3.USAGE*                                                   *vim-stardict-usage*
 
+------------------------------------------------------------------------------
+*3.1* *Vim-Usage*                                                      *vim-usage*
+
 To lookup the meaning of a word with |no-space-in-between|:
 
 	:StarDict random_word_with_no_spaces
@@ -80,18 +83,44 @@ To lookup the meaning of a word |under-the-cursor|:
 
 	:StarDictCursor
 
+------------------------------------------------------------------------------
+*3.2* *Bash-Usage*                                                    *bash-usage*
+
+To lookup the meaning of a word with |no-space-in-between|:
+
+	stardict random_word_with_no_spaces
+
+To lookup the meaning of a word with |spaces-in-between|, put it inside
+quotation marks (both double and single quotes are acceptable):
+
+	stardict "random word with spaces"
+	stardict 'random word with spaces'
+
+To look up the meaning of several words (either |no-spaces-in-between| or
+|spaces-in-between|):
+
+	stardict first_word second_word "third word" 'fourth word'
+	stardict "first word" 'second word'
+
+To view the meaning of word in Vim from Bash:
+
+	vstardict first_word second_word "third word" 'fourth word'
+
 
 ==============================================================================
 *4.CONFIGURATION*                                   *vim-stardict-configuration*
+
+*4.1* *Vim-Configuration*                                      *vim-configuration*
 
 You can tweak the behavior of vim-stardict by setting a few variables in your
 |.vimrc| file. For example:
 
 	let g:stardict_split_size = 20
 	let g:stardict_split_horizontal = 1
+    let g:stardict_prefer_python3 = 0
 
 ------------------------------------------------------------------------------
-*4.1* *g:stardict_split_size*                                *stardict_split_size*
+*4.1.1* *g:stardict_split_size*                              *stardict_split_size*
 
 This is the size of the vim-stardict split. The value of g:stardict_split_size
 can be either a number or an empty string ''.
@@ -106,7 +135,7 @@ can be either a number or an empty string ''.
 Default: '' (empty string)
 
 ------------------------------------------------------------------------------
-*4.2* *g:stardict_split_horizontal*                    *stardict_split_horizontal*
+*4.1.2* *g:stardict_split_horizontal*                  *stardict_split_horizontal*
 
 This option specify whether to use a |:split| or a |:vsplit| for the
 vim-stardict split.
@@ -115,6 +144,45 @@ vim-stardict split.
 	* If set to 0, vim-stardict will be opened in a |:vplit|
 
 Default: 1
+
+-----------------------------------------------------------------------------
+*4.1.3* *g:stardict_prefer_python3*                     *stardict_prefer_python3*
+
+This option specify whether vim-stardict should use Python 2 or Python 3. If
+your Vim is compiled with +python3 support, you don't have to set this variable
+as it defaults to 1. Otherwise, if your Vim is compiled with Python 2
+support only (+python), add this to your |.vimrc| file:
+
+    let g:stardict_prefer_python3 = 0
+
+Default: 1
+
+
+-----------------------------------------------------------------------------
+*4.2* *Bash-Configuration*                                   *bash-configuration*
+
+In order to use this plugin for Bash also, you need to configure your |.bashrc|
+similar to the following:
+
+    # Source the stardict.sh file in the vim-stardict installation directory
+	if [[ -f ${HOME}/.vim/bundle/vim-stardict/bash/stardict.sh ]]; then
+		source ${HOME}/.vim/bundle/vim-stardict/bash/stardict.sh
+	fi
+
+	# To avoid typing the long & daunting 'stardict' & 'vstardict' commands,
+	# you can alias it to something else
+	alias whatis="stardict"
+    alias whatvim="vstardict"
+
+You can change 'whatis' and 'whatvim' to whatever aliases you like. Also, you
+can also change the path to source the |stardict.sh| file above, if your Vim
+plugin directory is different.
+
+With the above configuration, you can issue these commands to find meaning of
+words:
+
+	whatis first_word second_word "third word" 'fourth word'
+	whatvim first_word second_word "third word" 'fourth word'
 
 
 ==============================================================================
@@ -190,6 +258,12 @@ request:
 
 ==============================================================================
 *10.Changelog*                                          *vim-stardict-changelog*
+
+|v0.2.0|
+    * Added support for Bash
+    * Added output redirection from Bash to Vim
+    * Fixed some highlight errors on Vim and Bash
+    * Changed highlighting color for "Found ... items"
 
 |v0.1.0|:
 	* Initial stable release

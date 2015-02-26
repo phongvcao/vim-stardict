@@ -55,7 +55,7 @@ There are several ways to install **vim-stardict**:
 Usage
 =====
 
-## Vim:
+## 1. Vim:
 To lookup the meaning of a word with no-space-in-between:
 
 	:StarDict random_word_with_no_spaces
@@ -77,7 +77,7 @@ To lookup the meaning of a word under-the-cursor:
 	:StarDictCursor
 
 
-## Bash:
+## 2. Bash:
 To lookup the meaning of a word with no-space-in-between:
 
 	stardict random_word_with_no_spaces
@@ -102,7 +102,7 @@ To view the meaning of word in Vim from Bash:
 Configuration
 =============
 
-## 1. For Vim:
+## 1. Vim:
 Sample configuration for your `.vimrc` (more in the official documentation)
 
 ```vim
@@ -122,8 +122,9 @@ Sample configuration for your `.vimrc` (more in the official documentation)
 	nnoremap <leader>sc :StarDictCursor<CR>     " Lookup the word under the cursor
 ```
 
-## 2. For Bash:
-Sample configuration for your `.bashrc` (more in the official documentation)
+## 2. Bash:
+Sample configuration for your `.bashrc` (supposed you use [Vundle][3] to manage
+your plugins):
 
 ```bash
 	# Source the stardict.sh file in the vim-stardict installation directory
@@ -137,7 +138,11 @@ Sample configuration for your `.bashrc` (more in the official documentation)
 	alias whatvim="vstardict"
 ```
 
-For the above configuration, you can issue these commands to find meaning of
+You can change **whatis** and **whatvim** above to whatever aliases you like.
+Also, you can change the path to source the **stardict.sh** file above, if your
+Vim plugin directory is different.
+
+With the above configuration, you can issue these commands to find meaning of
 words:
 
 	whatis first_word second_word "third word" 'fourth word'
