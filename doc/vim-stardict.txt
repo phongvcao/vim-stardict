@@ -23,7 +23,7 @@ CONTENTS                                               *vim-stardict-contents*
 *1.INTRODUCTION*                                     *vim-stardict-introduction*
 
 *vim-stardict* is a Vim plugin that helps users lookup for meaning of words right
-inside Vim through *StarDict* *Command-Line* *Version* |SDCV|
+inside Vim and through *StarDict* *Command-Line* *Version* |SDCV|
 (http://sdcv.sourceforge.net/) - the console version of the popular |StarDict|
 program (http://www.stardict.org/).
 

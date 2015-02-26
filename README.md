@@ -1,7 +1,7 @@
 # vim-stardict
 
-A Vim plugin for looking up meaning of words inside Vim using the **StarDict
-Command-Line Version (SDCV)** dictionary program.
+A Vim plugin for looking up meaning of words inside Vim and Bash using the
+**StarDict Command-Line Version (SDCV)** dictionary program.
 
 In addition to opening a Vim split and populating it with the output of StarDict
 Command-Line Version (SDCV), **vim-stardict** takes advantage of Vim syntax
@@ -149,6 +149,18 @@ words:
 	whatvim first_word second_word "third word" 'fourth word'
 
 
+Documentation
+=============
+* See [:help vim-stardict](https://github.com/phongvcao/vim-stardict/blob/master/doc/vim-stardict.txt) VimDoc for more information.
+
+
+Contributors
+============
+* See [vim-stardict contributors](https://github.com/phongvcao/vim-stardict/graphs/contributors)
+
+*Thank you to you all!*
+
+
 Credits
 =======
 
@@ -160,3 +172,12 @@ the original idea from.
 [2]: https://github.com/Shougo/neobundle.vim
 [3]: https://github.com/gmarik/vundle
 
+TODO:
+=====
+**vim-stardict** is currently under heavy development. Your contributions and
+patches are highly appreciated.
+
+* Add support for Windows
+* Implement word lookup in Visual Mode (look up the selected text)
+* Once opened under :StarDictCursor mode, whenever the mouse move to a new word,
+vim-stardict automatically looks up for that word (let g:stardict_lookup_on_mousemove)
