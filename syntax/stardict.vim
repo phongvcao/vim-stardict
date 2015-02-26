@@ -1,5 +1,5 @@
 "=============================================================================
-" FILE: plugin/bsdcv.vim
+" FILE: autoload/stardict.vim
 " AUTHOR: Phong V. Cao <phongvcao@phongvcao.com>
 " License: MIT license {{{
 " Permission is hereby granted, free of charge, to any person obtaining
@@ -24,28 +24,22 @@
 "=============================================================================
 
 
-if exists('g:loaded_bsdcv')
+if exists("b:current_syntax")
     finish
 endif
 
-if !exists('g:bsdcv_split_size')
-    let g:bsdcv_split_size = ''
-endif
+let b:current_syntax = "stardict"
 
-if !exists('g:bsdcv_split_horizontal')
-    let g:bsdcv_split_horizontal = 1
-endif
+syntax match stardictResult "\v^[A-Z].*"
+syntax match stardictWord "\v^\@.*"
+syntax match stardictWordType "\v^\*.*"
+syntax match stardictWordMeaning "\v^[0-9].*"
+syntax match stardictWordExample "\v^(    \-\s.*\:|\!.*)"
+syntax match stardictDictName "\v^\@[^/]*\:[^/]*"
 
-if !exists('g:bsdcv_prefer_python3')
-    let g:bsdcv_prefer_python3 = 1
-endif
-
-" TODO: bsdcv automatically searched all possible directories for bsdcv.vim to
-" source from
-augroup BSDCVFileTypeDetect
-    autocmd! Syntax bsdcv call bsdcv#SourceSyntaxFile()
-augroup END
-
-" Map vimbsdcv#bsdcv command to BSDCV() function
-command! -nargs=* BSDCV call bsdcv#BSDCV(<f-args>)
-command! -nargs=* BSDCVCursor call bsdcv#BSDCV(expand('<cword>'))
+highlight link stardictResult Special
+highlight link stardictWord PreProc
+highlight link stardictWordType Statement
+highlight link stardictWordMeaning Identifier
+highlight link stardictWordExample Type
+highlight link stardictDictName Underlined

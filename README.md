@@ -1,93 +1,143 @@
-# BeautifySDCV
+# vim-stardict
 
 A Vim plugin for looking up meaning of words inside Vim using the **StarDict
 Command-Line Version (SDCV)** dictionary program.
 
 In addition to opening a Vim split and populating it with the output of StarDict
-Command-Line Version (SDCV), **BeautifySDCV** takes advantage of Vim syntax
+Command-Line Version (SDCV), **vim-stardict** takes advantage of Vim syntax
 highlighting and some basic regexes to present the words' definitions to the
 users in an organized and user-friendly way.
 
 The plugin was inspired and originally a fork of
 [chusiang/vim-sdcv](https://github.com/chusiang/vim-sdcv).
 
+
 Screenshots
 ===========
 
-Lookup word under cursor (using :split)
+Lookup word under cursor in a :split (using :StarDictCursor command)
 --------------
-![:split mode of BeautifySDCV](http://www.mediafire.com/convkey/bc14/a6nv3auv11g61226g.jpg)
+![:split mode of vim-stardict](http://www.mediafire.com/convkey/bc14/a6nv3auv11g61226g.jpg)
 
-Lookup word using :BSDCV command (using :vsplit)
+Lookup word in a :vsplit (using :StarDict command)
 ---------------
-![:vsplit mode of BeautifySDCV](http://www.mediafire.com/convkey/3ef1/js0cp9p475fse5q6g.jpg)
+![:vsplit mode of vim-stardict](http://www.mediafire.com/convkey/3ef1/js0cp9p475fse5q6g.jpg)
 
-Lookup word in Bash (using 'bsdcv' command)
+Lookup word in Bash (using 'stardict' command)
 ---------------
+![Using vim-stardict from Bash](http://www.mediafire.com/convkey/f4a6/xy7slj2jsdcrpsu6g.jpg)
 
-Redirect Bash output to Vim (using 'vsdcv' command)
+Redirect Bash output to Vim (using 'vstardict' command)
 ---------------
+![Redirect vim-stardict Bash output to Vim](http://www.mediafire.com/convkey/830c/jasp8h8pimlhbat6g.jpg)
 
 
 Installation
 ============
 
-Before installing **BeautifySDCV** , the following applications need to be
+Before installing **vim-stardict** , the following applications need to be
 already installed in your computer:
 
 * [SDCV][0]
 
-There are several ways to install **BeautifySDCV**:
+There are several ways to install **vim-stardict**:
 
 * [Pathogen][1]
-    * `git clone https://github.com/phongvcao/BeautifySDCV.git`
+    * `git clone https://github.com/phongvcao/vim-stardict.git`
 * [NeoBundle][2]
-    * `NeoBundle 'phongvcao/BeautifySDCV'`
+    * `NeoBundle 'phongvcao/vim-stardict'`
 * [Vundle][3]
-    * `Plugin 'phongvcao/BeautifySDCV'`
+    * `Plugin 'phongvcao/vim-stardict'`
 * Manual
     * Copy all of the files into your `~/.vim` directory
+
 
 Usage
 =====
 
+## Vim:
 To lookup the meaning of a word with no-space-in-between:
 
-	:BSDCV random_word_with_no_spaces
+	:StarDict random_word_with_no_spaces
 
 To lookup the meaning of a word with spaces-in-between, put it inside
 quotation marks (both double and single quotes are acceptable):
 
-	:BSDCV "random word with spaces"
-	:BSDCV 'random word with spaces'
+	:StarDict "random word with spaces"
+	:StarDict 'random word with spaces'
 
 To look up the meaning of several words (either no-spaces-in-between or
 spaces-in-between):
 
-	:BSDCV first_word second_word "third word" 'fourth word'
-	:BSDCV "first word" 'second word'
+	:StarDict first_word second_word "third word" 'fourth word'
+	:StarDict "first word" 'second word'
 
 To lookup the meaning of a word under-the-cursor:
 
-	:BSDCVCursor
+	:StarDictCursor
+
+
+## Bash:
+To lookup the meaning of a word with no-space-in-between:
+
+	stardict random_word_with_no_spaces
+
+To lookup the meaning of a word with spaces-in-between, put it inside
+quotation marks (both double and single quotes are acceptable):
+
+	stardict "random word with spaces"
+	stardict 'random word with spaces'
+
+To look up the meaning of several words (either no-spaces-in-between or
+spaces-in-between):
+
+	stardict first_word second_word "third word" 'fourth word'
+	stardict "first word" 'second word'
+
+To view the meaning of word in Vim from Bash:
+
+				vstardict first_word second_word "third word" 'fourth word'
+
 
 Configuration
 =============
 
-Sample configuration for you `.vimrc` (more in the official documentation)
+## Vim:
+Sample configuration for your `.vimrc` (more in the official documentation)
 
 ```vim
-    " Make BeautifySDCV split open in a :split (default value)
-    let g:bsdcv_split_horizontal = 1
+    " Make vim-stardict split open in a :split (default value)
+    let g:stardict_split_horizontal = 1
 
-    " Set BeautifySDCV split width (or height) to 20 based on
-    " whether BeautifySDCV split is a :vsplit (or :split)
-	let g:bsdcv_split_size = 20
+    " Set vim-stardict split width (or height) to 20 based on
+    " whether vim-stardict split is a :vsplit (or :split)
+	let g:stardict_split_size = 20
 
-    " Map BeautifySDCV's commands
-    nnoremap <leader>sw :BSDCV<Space>	    " Ready for typing the word in
-	nnoremap <leader>sc :BSDCVCursor<CR>     " Lookup the word under the cursor
+	" This option should only be set if your Vim is compiled with +python and
+	" -python3 options (in other words, if your Vim doesn't support Python 3)
+	" let g:stardict_prefer_python3 = 0
+
+    " Map vim-stardict's commands
+    nnoremap <leader>sw :StarDict<Space>	    " Ready for typing the word in
+	nnoremap <leader>sc :StarDictCursor<CR>     " Lookup the word under the cursor
 ```
+
+## Bash:
+Sample configuration for your `.bashrc` (more in the official documentation)
+
+```bash
+
+	# Source the stardict.sh file in the vim-stardict installation directory
+	if [[ -f ${HOME}/.vim/bundle/vim-stardict/bash/stardict.sh ]]; then
+		source ${HOME}/.vim/bundle/vim-stardict/bash/stardict.sh
+	fi
+
+	# To avoid typing the long & daunting 'stardict' & 'vstardict' commands,
+	# you can map it to something else
+	alias whatis="stardict"
+	alias whatvim="vstardict"
+```
+
 
 Credits
 =======

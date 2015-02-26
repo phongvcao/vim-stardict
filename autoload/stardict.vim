@@ -1,5 +1,5 @@
 "=============================================================================
-" FILE: autoload/bsdcv.vim
+" FILE: autoload/stardict.vim
 " AUTHOR: Phong V. Cao <phongvcao@phongvcao.com>
 " License: MIT license {{{
 " Permission is hereby granted, free of charge, to any person obtaining
@@ -29,7 +29,7 @@ let s:script_folder_path = escape(expand('<sfile>:p:h'), '\')
 
 
 function! s:SetPythonPath() abort
-    if has('python3')
+    if (g:stardict_prefer_python3) || has('python3')
         python3 import sys
         python3 import vim
         execute 'python3 sys.path.insert(0, "' . s:script_folder_path . '/../python")'
@@ -43,35 +43,35 @@ function! s:SetPythonPath() abort
 endfunction
 
 
-function! bsdcv#BSDCV(...)
-    let l:expl=bsdcv#GetDefinition(a:000)
-    bufdo if (&filetype ==# 'bsdcv') | let l:cur_file_name=expand('%') | endif
+function! stardict#StarDict(...)
+    let l:expl=stardict#GetDefinition(a:000)
+    bufdo if (&filetype ==# 'stardict') | let l:cur_file_name=expand('%') | endif
 
     if exists('l:cur_file_name')
         silent! execute 'bd ' . l:cur_file_name
     endif
 
-    if (g:bsdcv_split_horizontal ==# 1)
-        silent! execute g:bsdcv_split_size . 'sp bsdcv'
+    if (g:stardict_split_horizontal ==# 1)
+        silent! execute g:stardict_split_size . 'sp vim-stardict'
     else
-        silent! execute g:bsdcv_split_size . 'vsp bsdcv'
+        silent! execute g:stardict_split_size . 'vsp vim-stardict'
     endif
 
-    setlocal buftype=nofile bufhidden=hide noswapfile readonly filetype=bsdcv
+    setlocal buftype=nofile bufhidden=hide noswapfile readonly filetype=stardict
     silent! 1s/^/\=l:expl/
     1
 
 endfunction
 
 
-function! bsdcv#GetDefinition(...)
+function! stardict#GetDefinition(...)
     if s:SetPythonPath() != 1
         return "Cannot set ${PATH} variable!"
     endif
 
     let l:argsStr = join(a:000, '\\ ')
 
-    if has('python3')
+    if (g:stardict_prefer_python3) || has('python3')
         python3 definition = GetDefinitionInner(vim.eval('a:000'))
         let l:definition = py3eval('definition')
     elseif has('python')
@@ -82,37 +82,37 @@ function! bsdcv#GetDefinition(...)
     return l:definition
 endfunction
 
-if (g:bsdcv_prefer_python3)
+if (g:stardict_prefer_python3)
 python3 << EOF
 def GetDefinitionInner(argsStr):
-    import bsdcv
+    import stardict
 
-    return bsdcv.getDefinition(argsStr)
+    return stardict.getDefinition(argsStr)
 EOF
 else
 python << EOF
 def GetDefinitionInner(argsStr):
-    import bsdcv
+    import stardict
 
-    return bsdcv.getDefinition(argsStr)
+    return stardict.getDefinition(argsStr)
 EOF
 endif
 
-function! bsdcv#SourceSyntaxFile()
-    let l:syntax_file_0 = '~/.vim/bundle/bsdcv/syntax/bsdcv.vim'
-    let l:syntax_file_1 = '~/.vim/plugin/syntax/bsdcv.vim'
-    let l:syntax_file_2 = '/usr/share/vim/vimfiles/syntax/bsdcv.vim'
+function! stardict#SourceSyntaxFile()
+    let l:syntax_file_0 = '~/.vim/bundle/stardict/syntax/stardict.vim'
+    let l:syntax_file_1 = '~/.vim/plugin/syntax/stardict.vim'
+    let l:syntax_file_2 = '/usr/share/vim/vimfiles/syntax/stardict.vim'
 
     if filereadable(expand(l:syntax_file_0))
         silent! execute 'source ' . l:syntax_file_0
-        let g:bsdcv_syntax_file = l:syntax_file_0
+        let g:stardict_syntax_file = l:syntax_file_0
 
     elseif filereadable(expand(l:syntax_file_1))
         silent! execute 'source ' . l:syntax_file_1
-        let g:bsdcv_syntax_file = l:syntax_file_1
+        let g:stardict_syntax_file = l:syntax_file_1
 
     elseif filereadable(expand(l:syntax_file_2))
         silent! execute 'source ' . l:syntax_file_2
-        let g:bsdcv_syntax_file = l:syntax_file_2
+        let g:stardict_syntax_file = l:syntax_file_2
     endif
 endfunction
