@@ -16,6 +16,5 @@ for arg in "$@"; do
     FINAL_DEFINITIONS+="$(python -c "${PYTHON_COMMAND}; import stardict; print(stardict.getDefinition([['$arg']]))")""\n""\n"
 done
 
-echo -e "${FINAL_DEFINITIONS}"
 echo -e "${FINAL_DEFINITIONS}" | vim -c "${VIM_COMMAND}" -
 }

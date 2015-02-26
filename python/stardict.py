@@ -57,7 +57,7 @@ def getDefinition(argsListList, caller="vim"):
 
     if (caller == "bash"):
         stardictResult = "[A-Z].*"
-        stardictWord = "[a-z][^/]*"
+        stardictWord = "[^/ @]+\\:"
         stardictWordType = "\\*.*"
         stardictWordMeaning = "[0-9].*"
         stardictWordExample = "(    \\-\\s.*\\:|\\!.*)"
@@ -180,7 +180,8 @@ def formatStr(outputStr):
 
         elif (re.match(wordPattern, line)):
             # Re-format Word
-            replacedStr = re.sub("^\\@", "", line, flags=re.IGNORECASE)
+            replacedStr = re.sub("^\\@([^/ ]*)", "\\1:", line,
+                    flags=re.IGNORECASE)
             finalStr += replacedStr
             replacedBullet = 1
         else:
