@@ -172,8 +172,8 @@ the original idea from.
 [2]: https://github.com/Shougo/neobundle.vim
 [3]: https://github.com/gmarik/vundle
 
-TODO:
-=====
+Todo
+====
 **vim-stardict** is currently under heavy development. Your contributions and
 patches are highly appreciated.
 
