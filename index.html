@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>vim-stardict by phongvcao</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>vim-stardict</h1>
+        <h2>A Vim plugin for looking up meaning of words inside Vim and Bash using StarDict Command-Line Version (SDCV) dictionary program</h2>
+        <a href="https://github.com/phongvcao/vim-stardict" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="vim-stardict" class="anchor" href="#vim-stardict" aria-hidden="true"><span class="octicon octicon-link"></span></a>vim-stardict</h1>
+
+<p>A Vim plugin for looking up meaning of words inside Vim and Bash using the
+<strong>StarDict Command-Line Version (SDCV)</strong> dictionary program.</p>
+
+<p>In addition to opening a Vim split and populating it with the output of StarDict
+Command-Line Version (SDCV), <strong>vim-stardict</strong> takes advantage of Vim syntax
+highlighting and some basic regexes to present the words' definitions to the
+users in an organized and user-friendly way.</p>
+
+<p>The plugin was inspired and originally a fork of
+<a href="https://github.com/chusiang/vim-sdcv">chusiang/vim-sdcv</a>.</p>
+
+<h1>
+<a id="screenshots" class="anchor" href="#screenshots" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screenshots</h1>
+
+<h2>
+<a id="lookup-word-under-cursor-in-a-split-using-stardictcursor-command" class="anchor" href="#lookup-word-under-cursor-in-a-split-using-stardictcursor-command" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lookup word under cursor in a :split (using :StarDictCursor command)</h2>
+
+<p><img src="http://www.mediafire.com/convkey/bc14/a6nv3auv11g61226g.jpg" alt=":split mode of vim-stardict"></p>
+
+<h2>
+<a id="lookup-word-in-a-vsplit-using-stardict-command" class="anchor" href="#lookup-word-in-a-vsplit-using-stardict-command" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lookup word in a :vsplit (using :StarDict command)</h2>
+
+<p><img src="http://www.mediafire.com/convkey/3ef1/js0cp9p475fse5q6g.jpg" alt=":vsplit mode of vim-stardict"></p>
+
+<h2>
+<a id="lookup-word-in-bash-using-stardict-command" class="anchor" href="#lookup-word-in-bash-using-stardict-command" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lookup word in Bash (using 'stardict' command)</h2>
+
+<p><img src="http://www.mediafire.com/convkey/c799/jasp8h8pimlhbat6g.jpg" alt="Using vim-stardict from Bash"></p>
+
+<h2>
+<a id="redirect-bash-output-to-vim-using-vstardict-command" class="anchor" href="#redirect-bash-output-to-vim-using-vstardict-command" aria-hidden="true"><span class="octicon octicon-link"></span></a>Redirect Bash output to Vim (using 'vstardict' command)</h2>
+
+<p><img src="http://www.mediafire.com/convkey/f4a6/xy7slj2jsdcrpsu6g.jpg" alt="Redirect vim-stardict Bash output to Vim"></p>
+
+<h1>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h1>
+
+<p>Before installing <strong>vim-stardict</strong> , the following applications need to be
+already installed in your computer:</p>
+
+<ul>
+<li><a href="http://sdcv.sourceforge.net/">SDCV</a></li>
+</ul>
+
+<p>There are several ways to install <strong>vim-stardict</strong>:</p>
+
+<ul>
+<li>
+<a href="https://github.com/tpope/vim-pathogen">Pathogen</a>
+
+<ul>
+<li><code>git clone https://github.com/phongvcao/vim-stardict.git</code></li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/Shougo/neobundle.vim">NeoBundle</a>
+
+<ul>
+<li><code>NeoBundle 'phongvcao/vim-stardict'</code></li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/gmarik/vundle">Vundle</a>
+
+<ul>
+<li><code>Plugin 'phongvcao/vim-stardict'</code></li>
+</ul>
+</li>
+<li>Manual
+
+<ul>
+<li>Copy all of the files into your <code>~/.vim</code> directory</li>
+</ul>
+</li>
+</ul>
+
+<h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
+
+<h2>
+<a id="1-vim" class="anchor" href="#1-vim" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Vim:</h2>
+
+<p>To lookup the meaning of a word with no-space-in-between:</p>
+
+<pre><code>:StarDict random_word_with_no_spaces
+</code></pre>
+
+<p>To lookup the meaning of a word with spaces-in-between, put it inside
+quotation marks (both double and single quotes are acceptable):</p>
+
+<pre><code>:StarDict "random word with spaces"
+:StarDict 'random word with spaces'
+</code></pre>
+
+<p>To look up the meaning of several words (either no-spaces-in-between or
+spaces-in-between):</p>
+
+<pre><code>:StarDict first_word second_word "third word" 'fourth word'
+:StarDict "first word" 'second word'
+</code></pre>
+
+<p>To lookup the meaning of a word under-the-cursor:</p>
+
+<pre><code>:StarDictCursor
+</code></pre>
+
+<h2>
+<a id="2-bash" class="anchor" href="#2-bash" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Bash:</h2>
+
+<p>To lookup the meaning of a word with no-space-in-between:</p>
+
+<pre><code>stardict random_word_with_no_spaces
+</code></pre>
+
+<p>To lookup the meaning of a word with spaces-in-between, put it inside
+quotation marks (both double and single quotes are acceptable):</p>
+
+<pre><code>stardict "random word with spaces"
+stardict 'random word with spaces'
+</code></pre>
+
+<p>To look up the meaning of several words (either no-spaces-in-between or
+spaces-in-between):</p>
+
+<pre><code>stardict first_word second_word "third word" 'fourth word'
+stardict "first word" 'second word'
+</code></pre>
+
+<p>To view the meaning of word in Vim from Bash:</p>
+
+<pre><code>vstardict first_word second_word "third word" 'fourth word'
+</code></pre>
+
+<h1>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h1>
+
+<h2>
+<a id="1-vim-1" class="anchor" href="#1-vim-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Vim:</h2>
+
+<p>Sample configuration for your <code>.vimrc</code> (more in the official documentation)</p>
+
+<div class="highlight highlight-vim"><pre><span class="pl-c">    " Make vim-stardict split open in a :split (default value)</span>
+    <span class="pl-s3">let</span> <span class="pl-vo">g:stardict_split_horizontal</span> = <span class="pl-c1">1</span>
+
+<span class="pl-c">    " Set vim-stardict split width (or height) to 20 based on</span>
+<span class="pl-c">    " whether vim-stardict split is a :vsplit (or :split)</span>
+    <span class="pl-s3">let</span> <span class="pl-vo">g:stardict_split_size</span> = <span class="pl-c1">20</span>
+
+<span class="pl-c">    " This option should only be set if your Vim is compiled with +python and</span>
+<span class="pl-c">    " -python3 options (in other words, if your Vim doesn't support Python 3)</span>
+<span class="pl-c">    " let g:stardict_prefer_python3 = 0</span>
+
+<span class="pl-c">    " Map vim-stardict's commands</span>
+    <span class="pl-s3">nnoremap</span> <span class="pl-s3">&lt;leader&gt;</span>sw :StarDict<span class="pl-s3">&lt;Space&gt;</span>        <span class="pl-c">" Ready for typing the word in</span>
+    <span class="pl-s3">nnoremap</span> <span class="pl-s3">&lt;leader&gt;</span>sc :StarDictCursor<span class="pl-s3">&lt;CR&gt;</span>     <span class="pl-c">" Lookup the word under the cursor</span></pre></div>
+
+<h2>
+<a id="2-bash-1" class="anchor" href="#2-bash-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Bash:</h2>
+
+<p>Sample configuration for your <code>.bashrc</code> (supposed you use <a href="https://github.com/gmarik/vundle">Vundle</a> to manage
+your plugins):</p>
+
+<div class="highlight highlight-bash"><pre>    <span class="pl-c"># Source the stardict.sh file in the vim-stardict installation directory</span>
+    <span class="pl-k">if</span> [[ <span class="pl-k">-f</span> <span class="pl-vo">${HOME}</span>/.vim/bundle/vim-stardict/bash/stardict.sh ]]<span class="pl-k">;</span> <span class="pl-k">then</span>
+        <span class="pl-s3">source</span> <span class="pl-vo">${HOME}</span>/.vim/bundle/vim-stardict/bash/stardict.sh
+    <span class="pl-k">fi</span>
+
+    <span class="pl-c"># To avoid typing the long &amp; daunting 'stardict' &amp; 'vstardict' commands,</span>
+    <span class="pl-c"># you can alias it to something else</span>
+    <span class="pl-s3">alias</span> whatis=<span class="pl-s1"><span class="pl-pds">"</span>stardict<span class="pl-pds">"</span></span>
+    <span class="pl-s3">alias</span> whatvim=<span class="pl-s1"><span class="pl-pds">"</span>vstardict<span class="pl-pds">"</span></span></pre></div>
+
+<p>You can change <strong>whatis</strong> and <strong>whatvim</strong> above to whatever aliases you like.
+Also, you can change the path to source the <strong>stardict.sh</strong> file above, if your
+Vim plugin directory is different.</p>
+
+<p>With the above configuration, you can issue these commands to find meaning of
+words:</p>
+
+<pre><code>whatis first_word second_word "third word" 'fourth word'
+whatvim first_word second_word "third word" 'fourth word'
+</code></pre>
+
+<h1>
+<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation</h1>
+
+<ul>
+<li>See <a href="https://github.com/phongvcao/vim-stardict/blob/master/doc/vim-stardict.txt">:help vim-stardict</a> VimDoc for more information.</li>
+</ul>
+
+<h1>
+<a id="contributors" class="anchor" href="#contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributors</h1>
+
+<ul>
+<li>See <a href="https://github.com/phongvcao/vim-stardict/graphs/contributors">vim-stardict contributors</a>
+</li>
+</ul>
+
+<p><em>Thank you to you all!</em></p>
+
+<h1>
+<a id="credits" class="anchor" href="#credits" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credits</h1>
+
+<ul>
+<li>Special thanks to <a href="https://github.com/chusiang/">chusiang</a> from whom I got
+the original idea from.</li>
+</ul>
+
+<h1>
+<a id="todo" class="anchor" href="#todo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Todo</h1>
+
+<p><strong>vim-stardict</strong> is currently under heavy development. Your contributions and
+patches are highly appreciated.</p>
+
+<ul>
+<li>Add support for Windows</li>
+<li>Implement word lookup in Visual Mode (look up the selected text)</li>
+<li>Once opened under :StarDictCursor mode, whenever the mouse move to a new word,
+vim-stardict automatically looks up for that word (let g:stardict_lookup_on_mousemove)</li>
+</ul>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/phongvcao/vim-stardict/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/phongvcao/vim-stardict/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/phongvcao/vim-stardict"></a> is maintained by <a href="https://github.com/phongvcao">phongvcao</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
