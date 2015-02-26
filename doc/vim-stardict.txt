@@ -192,7 +192,7 @@ To save some keystrokes, instead of typing in the many vim-stardict commands
 directly, you can map them into Vim keymappings:
 
 	nnoremap <leader>sw :StarDict<Space>    	" Ready for typing the word in
-	nnoremap <leader>sc :StarDictCursor<CR>     " Lookup the word under the cursor
+	nnoremap <leader>sc :StarDictCursor<CR>     " Lookup the word under cursor
 
 
 ==============================================================================

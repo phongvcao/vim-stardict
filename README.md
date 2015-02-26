@@ -122,7 +122,7 @@ Sample configuration for your `.vimrc` (more in the official documentation)
 
     " Map vim-stardict's commands
     nnoremap <leader>sw :StarDict<Space>	    " Ready for typing the word in
-	nnoremap <leader>sc :StarDictCursor<CR>     " Lookup the word under the cursor
+	nnoremap <leader>sc :StarDictCursor<CR>     " Lookup the word under cursor
 ```
 
 ## 2. Bash:
