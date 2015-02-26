@@ -25,11 +25,11 @@ Lookup word in a :vsplit (using :StarDict command)
 
 Lookup word in Bash (using 'stardict' command)
 ---------------
-![Using vim-stardict from Bash](http://www.mediafire.com/convkey/f4a6/xy7slj2jsdcrpsu6g.jpg)
+![Using vim-stardict from Bash](http://www.mediafire.com/convkey/830c/jasp8h8pimlhbat6g.jpg)
 
 Redirect Bash output to Vim (using 'vstardict' command)
 ---------------
-![Redirect vim-stardict Bash output to Vim](http://www.mediafire.com/convkey/830c/jasp8h8pimlhbat6g.jpg)
+![Redirect vim-stardict Bash output to Vim](http://www.mediafire.com/convkey/f4a6/xy7slj2jsdcrpsu6g.jpg)
 
 
 Installation
@@ -96,7 +96,7 @@ spaces-in-between):
 
 To view the meaning of word in Vim from Bash:
 
-				vstardict first_word second_word "third word" 'fourth word'
+	vstardict first_word second_word "third word" 'fourth word'
 
 
 Configuration
@@ -126,17 +126,23 @@ Sample configuration for your `.vimrc` (more in the official documentation)
 Sample configuration for your `.bashrc` (more in the official documentation)
 
 ```bash
-
 	# Source the stardict.sh file in the vim-stardict installation directory
 	if [[ -f ${HOME}/.vim/bundle/vim-stardict/bash/stardict.sh ]]; then
 		source ${HOME}/.vim/bundle/vim-stardict/bash/stardict.sh
 	fi
 
 	# To avoid typing the long & daunting 'stardict' & 'vstardict' commands,
-	# you can map it to something else
+	# you can alias it to something else
 	alias whatis="stardict"
 	alias whatvim="vstardict"
 ```
+
+For the above configuration, you can issue these commands to find meaning of
+words:
+
+	whatis first_word second_word "third word" 'fourth word'
+
+	whatvim first_word second_word "third word" 'fourth word'
 
 
 Credits
