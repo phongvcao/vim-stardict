@@ -25,7 +25,7 @@ Lookup word in a :vsplit (using :StarDict command)
 
 Lookup word in Bash (using 'stardict' command)
 ---------------
-![Using vim-stardict from Bash](http://www.mediafire.com/convkey/830c/jasp8h8pimlhbat6g.jpg)
+![Using vim-stardict from Bash](http://www.mediafire.com/convkey/c799/jasp8h8pimlhbat6g.jpg)
 
 Redirect Bash output to Vim (using 'vstardict' command)
 ---------------
