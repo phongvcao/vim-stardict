@@ -1,10 +1,10 @@
-# BeautifySdcv
+# BeautifySDCV
 
 A Vim plugin for looking up meaning of words inside Vim using the **StarDict
 Command-Line Version (SDCV)** dictionary program.
 
 In addition to opening a Vim split and populating it with the output of StarDict
-Command-Line Version (SDCV), **BeautifySdcv** takes advantage of Vim syntax
+Command-Line Version (SDCV), **BeautifySDCV** takes advantage of Vim syntax
 highlighting and some basic regexes to present the words' definitions to the
 users in an organized and user-friendly way.
 
@@ -16,11 +16,11 @@ Screenshots
 
 Lookup word under cursor (using :split)
 --------------
-![:split mode of BeautifySdcv](http://www.mediafire.com/convkey/bc14/a6nv3auv11g61226g.jpg)
+![:split mode of BeautifySDCV](http://www.mediafire.com/convkey/bc14/a6nv3auv11g61226g.jpg)
 
 Lookup word using :BSdcv command (using :vsplit)
 ---------------
-![:vsplit mode of BeautifySdcv](http://www.mediafire.com/convkey/3ef1/js0cp9p475fse5q6g.jpg)
+![:vsplit mode of BeautifySDCV](http://www.mediafire.com/convkey/3ef1/js0cp9p475fse5q6g.jpg)
 
 Lookup word in Bash (using 'bsdcv' command)
 ---------------
@@ -32,19 +32,19 @@ Redirect Bash output to Vim (using 'vsdcv' command)
 Installation
 ============
 
-Before installing **BeautifySdcv** , the following applications need to be
+Before installing **BeautifySDCV** , the following applications need to be
 already installed in your computer:
 
 * [SDCV][0]
 
-There are several ways to install **BeautifySdcv**:
+There are several ways to install **BeautifySDCV**:
 
 * [Pathogen][1]
-    * `git clone https://github.com/phongvcao/BeautifySdcv.git`
+    * `git clone https://github.com/phongvcao/BeautifySDCV.git`
 * [NeoBundle][2]
-    * `NeoBundle 'phongvcao/BeautifySdcv'`
+    * `NeoBundle 'phongvcao/BeautifySDCV'`
 * [Vundle][3]
-    * `Plugin 'phongvcao/BeautifySdcv'`
+    * `Plugin 'phongvcao/BeautifySDCV'`
 * Manual
     * Copy all of the files into your `~/.vim` directory
 
@@ -77,14 +77,14 @@ Configuration
 Sample configuration for you `.vimrc` (more in the official documentation)
 
 ```vim
-    " Make BeautifySdcv split open in a :split (default value)
+    " Make BeautifySDCV split open in a :split (default value)
     let g:bsdcv_split_horizontal = 1
 
-    " Set BeautifySdcv split width (or height) to 20 based on
-    " whether BeautifySdcv split is a :vsplit (or :split)
+    " Set BeautifySDCV split width (or height) to 20 based on
+    " whether BeautifySDCV split is a :vsplit (or :split)
 	let g:bsdcv_split_size = 20
 
-    " Map BeautifySdcv's commands
+    " Map BeautifySDCV's commands
     nnoremap <leader>sw :BSdcv<Space>	    " Ready for typing the word in
 	nnoremap <leader>sc :BSdcvCursor<CR>     " Lookup the word under the cursor
 ```
