@@ -162,7 +162,7 @@ Default: 1
 *4.2* *Bash-Configuration*                                   *bash-configuration*
 
 In order to use this plugin for Bash also, you need to configure your |.bashrc|
-similar to the following:
+similar to the following (supposed you use |Vundle| to manage your plugins):
 
     # Source the stardict.sh file in the vim-stardict installation directory
 	if [[ -f ${HOME}/.vim/bundle/vim-stardict/bash/stardict.sh ]]; then
