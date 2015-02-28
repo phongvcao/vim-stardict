@@ -47,6 +47,9 @@ endfunction
 function! stardict#StarDict(...)
     let l:expl=stardict#GetDefinition(a:000)
     let l:cur_file_name = expand('%')
+    if (&filetype ==# 'stardict')
+        let l:new_winnr = winnr()
+    endif
     let l:cur_bufnr = bufnr('')
     bufdo if (&filetype ==# 'stardict') | let l:cur_stardict_file_name = expand('%') | endif
 
@@ -60,18 +63,30 @@ function! stardict#StarDict(...)
     silent! 1s/^/\=l:expl/
     1
 
-    if (l:cur_file_name !=# '')
-        silent! execute 'aboveleft split '
+    if (l:cur_file_name !=# '') && (s:stardict_buf_count > 0)
+        if (g:stardict_split_horizontal)
+            silent! execute 'aboveleft split '
+        else
+            silent! execute 'aboveleft vsplit'
+        endif
         silent! execute 'buffer ' . l:cur_file_name
     else
         if (s:stardict_buf_count > 0)
-            silent! execute 'aboveleft split '
+            if (g:stardict_split_horizontal)
+                silent! execute 'aboveleft split '
+            else
+                silent! execute 'aboveleft vsplit'
+            endif
             silent! execute 'buffer ' . l:cur_bufnr
         endif
     endif
 
     if exists('l:cur_stardict_file_name')
         silent! execute 'bd ' . l:cur_stardict_file_name
+    endif
+
+    if exists('l:new_winnr')
+        silent! execute l:new_winnr . ' wincmd w'
     endif
 
     let s:stardict_buf_count = s:stardict_buf_count + 1
