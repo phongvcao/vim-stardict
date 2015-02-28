@@ -121,9 +121,11 @@ Sample configuration for your `.vimrc` (more in the official documentation)
 	" Python 3):
 	" let g:stardict_prefer_python3 = 0
 
-    " Map vim-stardict's commands
-    nnoremap <leader>sw :StarDict<Space>	  " Ready for typing the word in
-	nnoremap <leader>sc :StarDictCursor<CR>   " Lookup the word under cursor
+	" Map vim-stardict's commands
+	" Ready for typing the word in
+    nnoremap <leader>sw :StarDict<Space>
+	" Lookup the word under cursor
+	nnoremap <leader>sc :StarDictCursor<CR>
 
 	" OPTIONAL: You can change the colors of output of vim-stardict inside
 	" Vim as follow (see below for the comprehensive list of highlight
@@ -144,13 +146,14 @@ Sample configuration for your `.bashrc` (supposed you use [Vundle][3] to manage
 your plugins):
 
 ```bash
-	# Source the stardict.sh file in the vim-stardict installation directory
+	# Source the stardict.sh file in the vim-stardict installation
+	# directory
 	if [[ -f ${HOME}/.vim/bundle/vim-stardict/bash/stardict.sh ]]; then
 		source ${HOME}/.vim/bundle/vim-stardict/bash/stardict.sh
 	fi
 
-	# To avoid typing the long & daunting 'stardict' & 'vstardict' commands,
-	# you can alias it to something else
+	# To avoid typing the long & daunting 'stardict' & 'vstardict'
+	# commands, you can alias it to something else
 	alias whatis="stardict"
 	alias whatvim="vstardict"
 
