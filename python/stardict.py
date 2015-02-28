@@ -100,12 +100,12 @@ def getDefinition(argsListList, caller="vim"):
         #
 
         nc = "\033[0m"
-        preProcSubStr = os.environ["STARDICT_WORD"] + "\\1" + nc       # 9
-        specialSubStr = os.environ["STARDICT_RESULT"] + "\\1" + nc       # 9
-        statementSubStr = os.environ["STARDICT_WORD_TYPE"] + "\\1" + nc      # 2
-        identifierSubStr = os.environ["STARDICT_WORD_MEANING"] + "\\1" + nc     # 4
-        typeSubStr = os.environ["STARDICT_WORD_EXAMPLE"] + "\\1" + nc           # 3
-        underlinedSubStr = os.environ["STARDICT_DICT_NAME"] + "\\1" + nc    # 13
+        preProcSubStr = os.environ["STARDICT_WORD"] + "\\1" + nc
+        specialSubStr = os.environ["STARDICT_RESULT"] + "\\1" + nc
+        statementSubStr = os.environ["STARDICT_WORD_TYPE"] + "\\1" + nc
+        identifierSubStr = os.environ["STARDICT_WORD_MEANING"] + "\\1" + nc
+        typeSubStr = os.environ["STARDICT_WORD_EXAMPLE"] + "\\1" + nc
+        underlinedSubStr = os.environ["STARDICT_DICT_NAME"] + "\\1" + nc
 
         finalStr = ""
         replacedStr = ""

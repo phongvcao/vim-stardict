@@ -123,6 +123,15 @@ Sample configuration for your `.vimrc` (more in the official documentation)
     " Map vim-stardict's commands
     nnoremap <leader>sw :StarDict<Space>	    " Ready for typing the word in
 	nnoremap <leader>sc :StarDictCursor<CR>     " Lookup the word under cursor
+
+	" OPTIONAL: You can change the colors of output of vim-stardict inside Vim
+	" (see ':help group-name' for more information):
+	highlight link stardictResult Special            " Default value
+	highlight link stardictWord PreProc              " Default value
+	highlight link stardictWordType Statement        " Default value
+	highlight link stardictWordMeaning Identifier    " Default value
+	highlight link stardictWordExample Type          " Default value
+	highlight link stardictDictName Underlined       " Default value
 ```
 
 ## 2. Bash:
@@ -139,11 +148,22 @@ your plugins):
 	# you can alias it to something else
 	alias whatis="stardict"
 	alias whatvim="vstardict"
+
+	# OPTIONAL: You can change the colors of output of vim-stardict inside Bash
+	# (see below for the comprehensive list of color codes in Bash):
+	export STARDICT_RESULT="\033[0;31m"
+	export STARDICT_WORD="\033[0;91m"
+	export STARDICT_WORD_TYPE="\033[0;32m"
+	export STARDICT_WORD_MEANING="\033[0;34m"
+	export STARDICT_WORD_EXAMPLE="\033[0;33m"
+	export STARDICT_DICT_NAME="\033[0;95m"
 ```
 
 You can change **whatis** and **whatvim** above to whatever aliases you like.
 Also, you can change the path to source the **stardict.sh** file above, if your
 Vim plugin directory is different.
+
+**For the full list of color codes in Bash**, you can consult [this link][4]
 
 With the above configuration, you can issue these commands to find meaning of
 words:
@@ -174,6 +194,7 @@ the original idea from.
 [1]: https://github.com/tpope/vim-pathogen
 [2]: https://github.com/Shougo/neobundle.vim
 [3]: https://github.com/gmarik/vundle
+[4]: https://wiki.archlinux.org/index.php/Color_Bash_Prompt#List_of_colors_for_prompt_and_Bash
 
 Todo
 ====
