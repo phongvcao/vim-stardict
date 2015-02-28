@@ -191,8 +191,10 @@ stardict "first word" 'second word'
 <span class="pl-c">    " let g:stardict_prefer_python3 = 0</span>
 
 <span class="pl-c">    " Map vim-stardict's commands</span>
-    <span class="pl-s3">nnoremap</span> <span class="pl-s3">&lt;leader&gt;</span>sw :StarDict<span class="pl-s3">&lt;Space&gt;</span>      <span class="pl-c">" Ready for typing the word in</span>
-    <span class="pl-s3">nnoremap</span> <span class="pl-s3">&lt;leader&gt;</span>sc :StarDictCursor<span class="pl-s3">&lt;CR&gt;</span>   <span class="pl-c">" Lookup the word under cursor</span>
+<span class="pl-c">    " Ready for typing the word in</span>
+    <span class="pl-s3">nnoremap</span> <span class="pl-s3">&lt;leader&gt;</span>sw :StarDict<span class="pl-s3">&lt;Space&gt;</span>
+<span class="pl-c">    " Lookup the word under cursor</span>
+    <span class="pl-s3">nnoremap</span> <span class="pl-s3">&lt;leader&gt;</span>sc :StarDictCursor<span class="pl-s3">&lt;CR&gt;</span>
 
 <span class="pl-c">    " OPTIONAL: You can change the colors of output of vim-stardict inside</span>
 <span class="pl-c">    " Vim as follow (see below for the comprehensive list of highlight</span>
@@ -212,13 +214,14 @@ stardict "first word" 'second word'
 <p>Sample configuration for your <code>.bashrc</code> (supposed you use <a href="https://github.com/gmarik/vundle">Vundle</a> to manage
 your plugins):</p>
 
-<div class="highlight highlight-bash"><pre>    <span class="pl-c"># Source the stardict.sh file in the vim-stardict installation directory</span>
+<div class="highlight highlight-bash"><pre>    <span class="pl-c"># Source the stardict.sh file in the vim-stardict installation</span>
+    <span class="pl-c"># directory</span>
     <span class="pl-k">if</span> [[ <span class="pl-k">-f</span> <span class="pl-vo">${HOME}</span>/.vim/bundle/vim-stardict/bash/stardict.sh ]]<span class="pl-k">;</span> <span class="pl-k">then</span>
         <span class="pl-s3">source</span> <span class="pl-vo">${HOME}</span>/.vim/bundle/vim-stardict/bash/stardict.sh
     <span class="pl-k">fi</span>
 
-    <span class="pl-c"># To avoid typing the long &amp; daunting 'stardict' &amp; 'vstardict' commands,</span>
-    <span class="pl-c"># you can alias it to something else</span>
+    <span class="pl-c"># To avoid typing the long &amp; daunting 'stardict' &amp; 'vstardict'</span>
+    <span class="pl-c"># commands, you can alias it to something else</span>
     <span class="pl-s3">alias</span> whatis=<span class="pl-s1"><span class="pl-pds">"</span>stardict<span class="pl-pds">"</span></span>
     <span class="pl-s3">alias</span> whatvim=<span class="pl-s1"><span class="pl-pds">"</span>vstardict<span class="pl-pds">"</span></span>
 
