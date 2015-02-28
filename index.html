@@ -191,7 +191,18 @@ stardict "first word" 'second word'
 
 <span class="pl-c">    " Map vim-stardict's commands</span>
     <span class="pl-s3">nnoremap</span> <span class="pl-s3">&lt;leader&gt;</span>sw :StarDict<span class="pl-s3">&lt;Space&gt;</span>        <span class="pl-c">" Ready for typing the word in</span>
-    <span class="pl-s3">nnoremap</span> <span class="pl-s3">&lt;leader&gt;</span>sc :StarDictCursor<span class="pl-s3">&lt;CR&gt;</span>     <span class="pl-c">" Lookup the word under cursor</span></pre></div>
+    <span class="pl-s3">nnoremap</span> <span class="pl-s3">&lt;leader&gt;</span>sc :StarDictCursor<span class="pl-s3">&lt;CR&gt;</span>     <span class="pl-c">" Lookup the word under cursor</span>
+
+<span class="pl-c">    " OPTIONAL: You can change the colors of output of vim-stardict inside Vim</span>
+<span class="pl-c">    " as follow (see below for the comprehensive list of highlight group):</span>
+    highlight link stardictResult Special              <span class="pl-c">" Default value</span>
+    highlight link stardictWord PreProc                <span class="pl-c">" Default value</span>
+    highlight link stardictWordType Statement          <span class="pl-c">" Default value</span>
+    highlight link stardictWordMeaning Identifier      <span class="pl-c">" Default value</span>
+    highlight link stardictWordExample Type            <span class="pl-c">" Default value</span>
+    highlight link stardictDictName Underlined         <span class="pl-c">" Default value</span></pre></div>
+
+<p><strong>For the full list of highlight groups in Vim</strong>, you can consult <a href="http://vimdoc.sourceforge.net/htmldoc/syntax.html#group-name">:help group-name</a></p>
 
 <h2>
 <a id="2-bash-1" class="anchor" href="#2-bash-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Bash:</h2>
@@ -207,7 +218,18 @@ your plugins):</p>
     <span class="pl-c"># To avoid typing the long &amp; daunting 'stardict' &amp; 'vstardict' commands,</span>
     <span class="pl-c"># you can alias it to something else</span>
     <span class="pl-s3">alias</span> whatis=<span class="pl-s1"><span class="pl-pds">"</span>stardict<span class="pl-pds">"</span></span>
-    <span class="pl-s3">alias</span> whatvim=<span class="pl-s1"><span class="pl-pds">"</span>vstardict<span class="pl-pds">"</span></span></pre></div>
+    <span class="pl-s3">alias</span> whatvim=<span class="pl-s1"><span class="pl-pds">"</span>vstardict<span class="pl-pds">"</span></span>
+
+    <span class="pl-c"># OPTIONAL: You can change the colors of output of vim-stardict inside Bash</span>
+    <span class="pl-c"># (see below for the comprehensive list of color codes in Bash):</span>
+    <span class="pl-s">export</span> STARDICT_RESULT=<span class="pl-s1"><span class="pl-pds">"</span>\033[0;31m<span class="pl-pds">"</span></span>            <span class="pl-c"># Defaut value</span>
+    <span class="pl-s">export</span> STARDICT_WORD=<span class="pl-s1"><span class="pl-pds">"</span>\033[0;91m<span class="pl-pds">"</span></span>              <span class="pl-c"># Defaut value</span>
+    <span class="pl-s">export</span> STARDICT_WORD_TYPE=<span class="pl-s1"><span class="pl-pds">"</span>\033[0;32m<span class="pl-pds">"</span></span>         <span class="pl-c"># Defaut value</span>
+    <span class="pl-s">export</span> STARDICT_WORD_MEANING=<span class="pl-s1"><span class="pl-pds">"</span>\033[0;34m<span class="pl-pds">"</span></span>      <span class="pl-c"># Defaut value</span>
+    <span class="pl-s">export</span> STARDICT_WORD_EXAMPLE=<span class="pl-s1"><span class="pl-pds">"</span>\033[0;33m<span class="pl-pds">"</span></span>      <span class="pl-c"># Defaut value</span>
+    <span class="pl-s">export</span> STARDICT_DICT_NAME=<span class="pl-s1"><span class="pl-pds">"</span>\033[0;95m<span class="pl-pds">"</span></span>         <span class="pl-c"># Defaut value</span></pre></div>
+
+<p><strong>For the full list of color codes in Bash</strong>, you can consult <a href="https://wiki.archlinux.org/index.php/Color_Bash_Prompt#List_of_colors_for_prompt_and_Bash">this link</a></p>
 
 <p>You can change <strong>whatis</strong> and <strong>whatvim</strong> above to whatever aliases you like.
 Also, you can change the path to source the <strong>stardict.sh</strong> file above, if your
