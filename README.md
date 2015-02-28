@@ -102,6 +102,8 @@ To view the meaning of word in Vim from Bash:
 	vstardict first_word second_word "third word" 'fourth word'
 
 
+
+
 Configuration
 =============
 
