@@ -24,6 +24,14 @@
 #=============================================================================
 
 
+export STARDICT_RESULT="\033[0;31m"
+export STARDICT_WORD="\033[0;91m"
+export STARDICT_WORD_TYPE="\033[0;32m"
+export STARDICT_WORD_MEANING="\033[0;34m"
+export STARDICT_WORD_EXAMPLE="\033[0;33m"
+export STARDICT_DICT_NAME="\033[0;95m"
+
+
 function stardict() {
 for arg in "$@"; do
     $( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../python && pwd)/stardict.py "${arg}"

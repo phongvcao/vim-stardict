@@ -27,6 +27,7 @@
 
 
 import sys
+import os
 import locale
 import re
 from subprocess import Popen, PIPE
@@ -99,12 +100,12 @@ def getDefinition(argsListList, caller="vim"):
         #
 
         nc = "\033[0m"
-        preProcSubStr = "\033[0;91m\\1" + nc       # 9
-        specialSubStr = "\033[0;31m\\1" + nc       # 9
-        statementSubStr = "\033[0;32m\\1" + nc      # 2
-        identifierSubStr = "\033[0;34m\\1" + nc     # 4
-        typeSubStr = "\033[0;33m\\1" + nc           # 3
-        underlinedSubStr = "\033[0;95m\\1" + nc    # 13
+        preProcSubStr = os.environ["STARDICT_WORD"] + "\\1" + nc       # 9
+        specialSubStr = os.environ["STARDICT_RESULT"] + "\\1" + nc       # 9
+        statementSubStr = os.environ["STARDICT_WORD_TYPE"] + "\\1" + nc      # 2
+        identifierSubStr = os.environ["STARDICT_WORD_MEANING"] + "\\1" + nc     # 4
+        typeSubStr = os.environ["STARDICT_WORD_EXAMPLE"] + "\\1" + nc           # 3
+        underlinedSubStr = os.environ["STARDICT_DICT_NAME"] + "\\1" + nc    # 13
 
         finalStr = ""
         replacedStr = ""
