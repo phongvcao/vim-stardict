@@ -26,6 +26,7 @@
 
 " This is for setting up PYTHONPATH
 let s:script_folder_path = escape(expand('<sfile>:p:h'), '\')
+let s:stardict_buf_count = 0
 
 
 function! s:SetPythonPath() abort
@@ -45,21 +46,35 @@ endfunction
 
 function! stardict#StarDict(...)
     let l:expl=stardict#GetDefinition(a:000)
-    bufdo if (&filetype ==# 'stardict') | let l:cur_file_name=expand('%') | endif
-
-    if exists('l:cur_file_name')
-        silent! execute 'bd ' . l:cur_file_name
-    endif
+    let l:cur_file_name = expand('%')
+    let l:cur_bufnr = bufnr('')
+    bufdo if (&filetype ==# 'stardict') | let l:cur_stardict_file_name = expand('%') | endif
 
     if (g:stardict_split_horizontal ==# 1)
-        silent! execute g:stardict_split_size . 'sp vim-stardict'
+        silent! execute g:stardict_split_size . 'sp vim-stardict' . s:stardict_buf_count
     else
-        silent! execute g:stardict_split_size . 'vsp vim-stardict'
+        silent! execute g:stardict_split_size . 'vsp vim-stardict' . s:stardict_buf_count
     endif
 
     setlocal buftype=nofile bufhidden=hide noswapfile readonly filetype=stardict
     silent! 1s/^/\=l:expl/
     1
+
+    if (l:cur_file_name !=# '')
+        silent! execute 'aboveleft split '
+        silent! execute 'buffer ' . l:cur_file_name
+    else
+        if (s:stardict_buf_count > 0)
+            silent! execute 'aboveleft split '
+            silent! execute 'buffer ' . l:cur_bufnr
+        endif
+    endif
+
+    if exists('l:cur_stardict_file_name')
+        silent! execute 'bd ' . l:cur_stardict_file_name
+    endif
+
+    let s:stardict_buf_count = s:stardict_buf_count + 1
 
 endfunction
 
