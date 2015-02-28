@@ -125,14 +125,17 @@ Sample configuration for your `.vimrc` (more in the official documentation)
 	nnoremap <leader>sc :StarDictCursor<CR>     " Lookup the word under cursor
 
 	" OPTIONAL: You can change the colors of output of vim-stardict inside Vim
-	" (see ':help group-name' for more information):
-	highlight link stardictResult Special            " Default value
+	" as follow (see below for the comprehensive list of highlight group):
+	hi link stardictResult Special            " Default value
 	highlight link stardictWord PreProc              " Default value
 	highlight link stardictWordType Statement        " Default value
 	highlight link stardictWordMeaning Identifier    " Default value
 	highlight link stardictWordExample Type          " Default value
 	highlight link stardictDictName Underlined       " Default value
 ```
+
+**For the full list of highlight groups in Vim**, you can consult [:help group-name][5]
+
 
 ## 2. Bash:
 Sample configuration for your `.bashrc` (supposed you use [Vundle][3] to manage
@@ -151,12 +154,12 @@ your plugins):
 
 	# OPTIONAL: You can change the colors of output of vim-stardict inside Bash
 	# (see below for the comprehensive list of color codes in Bash):
-	export STARDICT_RESULT="\033[0;31m"
-	export STARDICT_WORD="\033[0;91m"
-	export STARDICT_WORD_TYPE="\033[0;32m"
-	export STARDICT_WORD_MEANING="\033[0;34m"
-	export STARDICT_WORD_EXAMPLE="\033[0;33m"
-	export STARDICT_DICT_NAME="\033[0;95m"
+	export STARDICT_RESULT="\033[0;31m"          # Defaut value
+	export STARDICT_WORD="\033[0;91m"            # Defaut value
+	export STARDICT_WORD_TYPE="\033[0;32m"       # Defaut value
+	export STARDICT_WORD_MEANING="\033[0;34m"    # Defaut value
+	export STARDICT_WORD_EXAMPLE="\033[0;33m"    # Defaut value
+	export STARDICT_DICT_NAME="\033[0;95m"       # Defaut value
 ```
 
 You can change **whatis** and **whatvim** above to whatever aliases you like.
@@ -195,6 +198,7 @@ the original idea from.
 [2]: https://github.com/Shougo/neobundle.vim
 [3]: https://github.com/gmarik/vundle
 [4]: https://wiki.archlinux.org/index.php/Color_Bash_Prompt#List_of_colors_for_prompt_and_Bash
+[5]: https://wiki.archlinux.org/index.php/Color_Bash_Prompt#List_of_colors_for_prompt_and_Bash
 
 Todo
 ====
