@@ -283,6 +283,10 @@ request:
 ==============================================================================
 *10.Changelog*                                          *vim-stardict-changelog*
 
+|v0.3.0|
+    * Added output colors customization for Vim and Bash
+    * Fixed extra split in Vim
+
 |v0.2.0|
     * Added support for Bash
     * Added output redirection from Bash to Vim
