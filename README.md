@@ -112,8 +112,8 @@ Sample configuration for your `.vimrc` (more in the official documentation)
     " Make vim-stardict split open in a :split (default value)
     let g:stardict_split_horizontal = 1
 
-    " Set vim-stardict split width (or height) to 20 based on
-    " whether vim-stardict split is a :vsplit (or :split)
+    " Set vim-stardict split width (or height) to 20 based on whether
+    " vim-stardict split is a :vsplit (or :split)
 	let g:stardict_split_size = 20
 
 	" This option should only be set if your Vim is compiled with +python
