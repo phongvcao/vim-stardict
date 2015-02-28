@@ -185,16 +185,18 @@ stardict "first word" 'second word'
 <span class="pl-c">    " whether vim-stardict split is a :vsplit (or :split)</span>
     <span class="pl-s3">let</span> <span class="pl-vo">g:stardict_split_size</span> = <span class="pl-c1">20</span>
 
-<span class="pl-c">    " This option should only be set if your Vim is compiled with +python and</span>
-<span class="pl-c">    " -python3 options (in other words, if your Vim doesn't support Python 3)</span>
+<span class="pl-c">    " This option should only be set if your Vim is compiled with +python</span>
+<span class="pl-c">    " and -python3 options (in other words, if your Vim doesn't support</span>
+<span class="pl-c">    " Python 3):</span>
 <span class="pl-c">    " let g:stardict_prefer_python3 = 0</span>
 
 <span class="pl-c">    " Map vim-stardict's commands</span>
-    <span class="pl-s3">nnoremap</span> <span class="pl-s3">&lt;leader&gt;</span>sw :StarDict<span class="pl-s3">&lt;Space&gt;</span>        <span class="pl-c">" Ready for typing the word in</span>
-    <span class="pl-s3">nnoremap</span> <span class="pl-s3">&lt;leader&gt;</span>sc :StarDictCursor<span class="pl-s3">&lt;CR&gt;</span>     <span class="pl-c">" Lookup the word under cursor</span>
+    <span class="pl-s3">nnoremap</span> <span class="pl-s3">&lt;leader&gt;</span>sw :StarDict<span class="pl-s3">&lt;Space&gt;</span>      <span class="pl-c">" Ready for typing the word in</span>
+    <span class="pl-s3">nnoremap</span> <span class="pl-s3">&lt;leader&gt;</span>sc :StarDictCursor<span class="pl-s3">&lt;CR&gt;</span>   <span class="pl-c">" Lookup the word under cursor</span>
 
-<span class="pl-c">    " OPTIONAL: You can change the colors of output of vim-stardict inside Vim</span>
-<span class="pl-c">    " as follow (see below for the comprehensive list of highlight group):</span>
+<span class="pl-c">    " OPTIONAL: You can change the colors of output of vim-stardict inside</span>
+<span class="pl-c">    " Vim as follow (see below for the comprehensive list of highlight</span>
+<span class="pl-c">    " group):</span>
     highlight link stardictResult Special              <span class="pl-c">" Default value</span>
     highlight link stardictWord PreProc                <span class="pl-c">" Default value</span>
     highlight link stardictWordType Statement          <span class="pl-c">" Default value</span>
@@ -220,8 +222,8 @@ your plugins):</p>
     <span class="pl-s3">alias</span> whatis=<span class="pl-s1"><span class="pl-pds">"</span>stardict<span class="pl-pds">"</span></span>
     <span class="pl-s3">alias</span> whatvim=<span class="pl-s1"><span class="pl-pds">"</span>vstardict<span class="pl-pds">"</span></span>
 
-    <span class="pl-c"># OPTIONAL: You can change the colors of output of vim-stardict inside Bash</span>
-    <span class="pl-c"># (see below for the comprehensive list of color codes in Bash):</span>
+    <span class="pl-c"># OPTIONAL: You can change the colors of output of vim-stardict inside</span>
+    <span class="pl-c"># Bash (see below for the comprehensive list of color codes in Bash):</span>
     <span class="pl-s">export</span> STARDICT_RESULT=<span class="pl-s1"><span class="pl-pds">"</span>\033[0;31m<span class="pl-pds">"</span></span>            <span class="pl-c"># Defaut value</span>
     <span class="pl-s">export</span> STARDICT_WORD=<span class="pl-s1"><span class="pl-pds">"</span>\033[0;91m<span class="pl-pds">"</span></span>              <span class="pl-c"># Defaut value</span>
     <span class="pl-s">export</span> STARDICT_WORD_TYPE=<span class="pl-s1"><span class="pl-pds">"</span>\033[0;32m<span class="pl-pds">"</span></span>         <span class="pl-c"># Defaut value</span>
