@@ -283,6 +283,17 @@ request:
 ==============================================================================
 *10.Changelog*                                          *vim-stardict-changelog*
 
+|v0.3.2|
+    * Fixed :split and :vsplit opening delay- Fixed multiple :split open at a time
+    * Reuse last 'stardict' buffer if there is one
+    * Hide 'vim-stardict' buffer from buffer list
+    * Removed buffer cache of old word meaning history
+    * Added Report Bugs section on README.md
+
+|v0.3.1|
+    * Restored mouse cursor after viewing definition
+    * Added LICENSE.txt
+
 |v0.3.0|
     * Added output colors customization for Vim and Bash
     * Fixed extra split in Vim

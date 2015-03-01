@@ -192,6 +192,12 @@ Contributors
 *Thank you to you all!*
 
 
+Report Bugs
+===========
+* If you find a bug please do not hesitate to post it (along with a screenshot
+of the bug, if applicable) on our [Github issue tracker](https://github.com/phongvcao/vim-stardict/issues/new).
+
+
 Credits
 =======
 
