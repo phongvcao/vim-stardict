@@ -284,7 +284,8 @@ request:
 *10.Changelog*                                          *vim-stardict-changelog*
 
 |v0.3.2|
-    * Fixed :split and :vsplit opening delay- Fixed multiple :split open at a time
+    * Fixed :split and :vsplit opening delay
+    * Fixed multiple :split open at a time
     * Reuse last 'stardict' buffer if there is one
     * Hide 'vim-stardict' buffer from buffer list
     * Removed buffer cache of old word meaning history
