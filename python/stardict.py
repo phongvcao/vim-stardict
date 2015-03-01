@@ -201,8 +201,8 @@ def formatStr(outputStr):
                     replacedStr = re.sub("^\\-", "        -", line,
                             flags=re.IGNORECASE)
                 else:
-                    replacedStr = re.sub("^\\-\\s+", str(replacedBullet) + ". ",
-                            line, flags=re.IGNORECASE)
+                    replacedStr = re.sub("^\\-\\s+", str(replacedBullet)
+                            ". ", line, flags=re.IGNORECASE)
                     replacedBullet += 1
             finalStr += replacedStr
 
