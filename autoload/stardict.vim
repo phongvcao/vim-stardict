@@ -71,6 +71,7 @@ function! stardict#StarDict(...)
         endif
     endif
 
+    silent exec "1,$d"
     setlocal buftype=nofile bufhidden=hide noswapfile readonly filetype=stardict
     setlocal number relativenumber
     silent! 1s/^/\=l:expl/
