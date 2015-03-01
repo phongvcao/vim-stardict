@@ -46,51 +46,35 @@ endfunction
 
 function! stardict#StarDict(...)
     let l:expl=stardict#GetDefinition(a:000)
-    let l:cur_file_name = expand('%')
-    if (&filetype ==# 'stardict')
-        let l:new_winnr = winnr()
-    endif
-    let l:cur_bufnr = bufnr('')
-    bufdo if (&filetype ==# 'stardict') | let l:cur_stardict_file_name = expand('%') | endif
 
-    if (g:stardict_split_horizontal ==# 1)
-        silent! execute g:stardict_split_size . 'sp vim-stardict' . s:stardict_buf_count
-    else
-        silent! execute g:stardict_split_size . 'vsp vim-stardict' . s:stardict_buf_count
+    if (&filetype != 'stardict')
+        let l:cur_winnr = winnr()
+        execute "normal! \<C-W>b"
+        if (winnr() > 1)
+            exe "normal! " . l:cur_winnr . "\<C-W>w"
+            while 1
+                if (&filetype == 'stardict')
+                    break
+                endif
+                exe "normal! \<C-W>w"
+                if (l:cur_winnr ==# winnr())
+                    break
+                endif
+            endwhile
+        endif
+        if &filetype != 'stardict'
+            if (g:stardict_split_horizontal ==# 1)
+                silent! execute g:stardict_split_size . 'sp vim-stardict' . s:stardict_buf_count
+            else
+                silent! execute g:stardict_split_size . 'vsp vim-stardict' . s:stardict_buf_count
+            endif
+        endif
     endif
 
     setlocal buftype=nofile bufhidden=hide noswapfile readonly filetype=stardict
+    setlocal number relativenumber
     silent! 1s/^/\=l:expl/
     1
-
-    if (l:cur_file_name !=# '') && (s:stardict_buf_count > 0)
-        if (g:stardict_split_horizontal)
-            silent! execute 'aboveleft split '
-        else
-            silent! execute 'aboveleft vsplit'
-        endif
-        silent! execute 'buffer ' . l:cur_file_name
-    else
-        if (s:stardict_buf_count > 0)
-            if (g:stardict_split_horizontal)
-                silent! execute 'aboveleft split '
-            else
-                silent! execute 'aboveleft vsplit'
-            endif
-            silent! execute 'buffer ' . l:cur_bufnr
-        endif
-    endif
-
-    if exists('l:cur_stardict_file_name')
-        silent! execute 'bd ' . l:cur_stardict_file_name
-    endif
-
-    if exists('l:new_winnr')
-        silent! execute l:new_winnr . ' wincmd w'
-    endif
-
-    let s:stardict_buf_count = s:stardict_buf_count + 1
-
 endfunction
 
 
