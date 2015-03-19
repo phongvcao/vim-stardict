@@ -283,6 +283,9 @@ request:
 ==============================================================================
 *10.Changelog*                                          *vim-stardict-changelog*
 
+|v0.3.3|
+    * Fixed wrong highlighting of words' examples
+
 |v0.3.2|
     * Fixed :split and :vsplit opening delay
     * Fixed multiple :split open at a time
