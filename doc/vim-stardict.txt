@@ -84,7 +84,7 @@ To lookup the meaning of a word |under-the-cursor|:
 	:StarDictCursor
 
 ------------------------------------------------------------------------------
-*3.2* *Bash-Usage*                                                    *bash-usage*
+*3.2* *Bash-Zsh-Usage*                                            *bash-zsh-usage*
 
 To lookup the meaning of a word with |no-space-in-between|:
 
@@ -102,7 +102,7 @@ To look up the meaning of several words (either |no-spaces-in-between| or
 	stardict first_word second_word "third word" 'fourth word'
 	stardict "first word" 'second word'
 
-To view the meaning of word in Vim from Bash:
+To view the meaning of word in Vim from Bash or Zsh:
 
 	vstardict first_word second_word "third word" 'fourth word'
 
@@ -170,10 +170,11 @@ Default: 1
 
 
 -----------------------------------------------------------------------------
-*4.2* *Bash-Configuration*                                   *bash-configuration*
+*4.2* *Bash-Zsh-Configuration*                              *bash-zsh-configuration*
 
-In order to use this plugin for Bash also, you need to configure your |.bashrc|
-similar to the following (supposed you use |Vundle| to manage your plugins):
+In order to use this plugin for Bash and Zsh also, you need to configure your
+|.bashrc| (or |.zshrc|) similar to the following (supposed you use |Vundle| to
+manage your plugins):
 
     # Export vim-stardict installation directory
     # NOTE: Only do this if your vim-stardict installation directory is other
@@ -204,7 +205,7 @@ similar to the following (supposed you use |Vundle| to manage your plugins):
 	export STARDICT_WORD_EXAMPLE="\033[0;33m"      # Defaut value
 	export STARDICT_DICT_NAME="\033[0;95m"         # Defaut value
 
-For the full list of color codes in Bash, you can consult this link:
+For the full list of color codes in Bash and Zsh, you can consult this link:
     http://vimdoc.sourceforge.net/htmldoc/syntax.html#group-name
 
 You can change 'whatis' and 'whatvim' to whatever aliases you like. Also, you
