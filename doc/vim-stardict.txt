@@ -295,7 +295,7 @@ request:
 *10.Changelog*                                          *vim-stardict-changelog*
 
 |v0.4.0|
-    * Added support for zsh
+    * Added support for Zsh
     * Added custom $STARDICT_DIR variable to let users specify vim-stardict
     installation directory
 
