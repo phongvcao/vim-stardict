@@ -37,7 +37,7 @@ Cao</a></p>
 <h1>
 <a id="vim-stardict" class="anchor" href="#vim-stardict" aria-hidden="true"><span class="octicon octicon-link"></span></a>vim-stardict</h1>
 
-<p>A Vim plugin for looking up meaning of words inside Vim and Bash using the
+<p>A Vim plugin for looking up meaning of words inside Vim, Bash and Zsh using the
 <strong>StarDict Command-Line Version (SDCV)</strong> dictionary program.</p>
 
 <p>In addition to opening a Vim split and populating it with the output of StarDict
@@ -165,7 +165,7 @@ spaces-in-between):</p>
 stardict "first word" 'second word'
 </code></pre>
 
-<p>To view the meaning of word in Vim from Bash:</p>
+<p>To view the meaning of word in Vim from Bash or Zsh:</p>
 
 <pre><code>vstardict first_word second_word "third word" 'fourth word'
 </code></pre>
@@ -179,11 +179,11 @@ stardict "first word" 'second word'
 <p>Sample configuration for your <code>.vimrc</code> (more in the official documentation)</p>
 
 <div class="highlight highlight-vim"><pre><span class="pl-c">    " Make vim-stardict split open in a :split (default value)</span>
-    <span class="pl-s3">let</span> <span class="pl-vo">g:stardict_split_horizontal</span> = <span class="pl-c1">1</span>
+    <span class="pl-c1">let</span> <span class="pl-smi">g:stardict_split_horizontal</span> = <span class="pl-c1">1</span>
 
 <span class="pl-c">    " Set vim-stardict split width (or height) to 20 based on whether</span>
 <span class="pl-c">    " vim-stardict split is a :vsplit (or :split)</span>
-    <span class="pl-s3">let</span> <span class="pl-vo">g:stardict_split_size</span> = <span class="pl-c1">20</span>
+    <span class="pl-c1">let</span> <span class="pl-smi">g:stardict_split_size</span> = <span class="pl-c1">20</span>
 
 <span class="pl-c">    " This option should only be set if your Vim is compiled with +python</span>
 <span class="pl-c">    " and -python3 options (in other words, if your Vim doesn't support</span>
@@ -192,9 +192,9 @@ stardict "first word" 'second word'
 
 <span class="pl-c">    " Map vim-stardict's commands</span>
 <span class="pl-c">    " Ready for typing the word in</span>
-    <span class="pl-s3">nnoremap</span> <span class="pl-s3">&lt;leader&gt;</span>sw :StarDict<span class="pl-s3">&lt;Space&gt;</span>
+    <span class="pl-c1">nnoremap</span> <span class="pl-c1">&lt;leader&gt;</span>sw :StarDict<span class="pl-c1">&lt;Space&gt;</span>
 <span class="pl-c">    " Lookup the word under cursor</span>
-    <span class="pl-s3">nnoremap</span> <span class="pl-s3">&lt;leader&gt;</span>sc :StarDictCursor<span class="pl-s3">&lt;CR&gt;</span>
+    <span class="pl-c1">nnoremap</span> <span class="pl-c1">&lt;leader&gt;</span>sc :StarDictCursor<span class="pl-c1">&lt;CR&gt;</span>
 
 <span class="pl-c">    " OPTIONAL: You can change the colors of output of vim-stardict inside</span>
 <span class="pl-c">    " Vim as follow (see below for the comprehensive list of highlight</span>
@@ -209,21 +209,30 @@ stardict "first word" 'second word'
 <p><strong>For the full list of highlight groups in Vim</strong>, you can consult <a href="http://vimdoc.sourceforge.net/htmldoc/syntax.html#group-name">:help group-name</a></p>
 
 <h2>
-<a id="2-bash-1" class="anchor" href="#2-bash-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Bash:</h2>
+<a id="2-bash-and-zsh" class="anchor" href="#2-bash-and-zsh" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Bash and Zsh:</h2>
 
-<p>Sample configuration for your <code>.bashrc</code> (supposed you use <a href="https://github.com/gmarik/vundle">Vundle</a> to manage
-your plugins):</p>
+<p>Sample configuration for your <code>.bashrc</code> (<code>.zshrc</code> is similar - please consult
+the documentation) (supposed you use <a href="https://github.com/gmarik/vundle">Vundle</a> to manage your plugins):</p>
 
-<div class="highlight highlight-bash"><pre>    <span class="pl-c"># Source the stardict.sh file in the vim-stardict installation</span>
-    <span class="pl-c"># directory</span>
-    <span class="pl-k">if</span> [[ <span class="pl-k">-f</span> <span class="pl-vo">${HOME}</span>/.vim/bundle/vim-stardict/bash/stardict.sh ]]<span class="pl-k">;</span> <span class="pl-k">then</span>
-        <span class="pl-s3">source</span> <span class="pl-vo">${HOME}</span>/.vim/bundle/vim-stardict/bash/stardict.sh
+<div class="highlight highlight-bash"><pre>    <span class="pl-c"># Export vim-stardict installation directory</span>
+    <span class="pl-c"># NOTE: Only do this if your vim-stardict installation directory is other</span>
+    <span class="pl-c"># than ${HOME}/.vim/bundle/vim-stardict. In other words, uncomment these</span>
+    <span class="pl-c"># lines if you are not using Vundle, Pathogen or NeoBundle to manage your</span>
+    <span class="pl-c"># Vim plugins:</span>
+    <span class="pl-k">export</span> STARDICT_DIR=<span class="pl-s"><span class="pl-pds">"</span>{HOME}/.vim/bundle/vim-stardict<span class="pl-pds">"</span></span>
+
+    <span class="pl-c"># For Bash: Source the stardict.sh file in the vim-stardict installation</span>
+    <span class="pl-c"># directory.</span>
+    <span class="pl-c"># For Zsh: The path to the stardict.zsh file is</span>
+    <span class="pl-c"># "${HOME}"/.vim/bundle/vim-stardict/bindings/zsh/stardict.zsh</span>
+    <span class="pl-k">if</span> [[ <span class="pl-k">-f</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">${HOME}</span><span class="pl-pds">"</span></span>/.vim/bundle/vim-stardict/bindings/bash/stardict.sh ]]<span class="pl-k">;</span> <span class="pl-k">then</span>
+        <span class="pl-c1">source</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">${HOME}</span><span class="pl-pds">"</span></span>/.vim/bundle/vim-stardict/bindings/bash/stardict.sh
     <span class="pl-k">fi</span>
 
     <span class="pl-c"># To avoid typing the long &amp; daunting 'stardict' &amp; 'vstardict'</span>
     <span class="pl-c"># commands, you can alias it to something else</span>
-    <span class="pl-s3">alias</span> whatis=<span class="pl-s1"><span class="pl-pds">"</span>stardict<span class="pl-pds">"</span></span>
-    <span class="pl-s3">alias</span> whatvim=<span class="pl-s1"><span class="pl-pds">"</span>vstardict<span class="pl-pds">"</span></span>
+    <span class="pl-c1">alias</span> whatis=<span class="pl-s"><span class="pl-pds">"</span>stardict<span class="pl-pds">"</span></span>
+    <span class="pl-c1">alias</span> whatvim=<span class="pl-s"><span class="pl-pds">"</span>vstardict<span class="pl-pds">"</span></span>
 
     <span class="pl-c"># OPTIONAL: You can change the colors of output of vim-stardict inside</span>
     <span class="pl-c"># Bash (see below for the comprehensive list of color codes in Bash):</span>
@@ -234,7 +243,7 @@ your plugins):</p>
     <span class="pl-c"># export STARDICT_WORD_EXAMPLE="\033[0;33m"      # Defaut value</span>
     <span class="pl-c"># export STARDICT_DICT_NAME="\033[0;95m"         # Defaut value</span></pre></div>
 
-<p><strong>For the full list of color codes in Bash</strong>, you can consult <a href="https://wiki.archlinux.org/index.php/Color_Bash_Prompt#List_of_colors_for_prompt_and_Bash">this link</a></p>
+<p><strong>For the full list of color codes in Bash and Zsh</strong>, you can consult <a href="https://wiki.archlinux.org/index.php/Color_Bash_Prompt#List_of_colors_for_prompt_and_Bash">this link</a></p>
 
 <p>You can change <strong>whatis</strong> and <strong>whatvim</strong> above to whatever aliases you like.
 Also, you can change the path to source the <strong>stardict.sh</strong> file above, if your
@@ -299,7 +308,7 @@ vim-stardict automatically looks up for that word (let g:stardict_lookup_on_mous
     <div id="footer_wrap" class="outer">
       <footer class="inner">
         <p class="copyright">vim-stardict maintained by <a href="https://github.com/phongvcao">phongvcao</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
 
