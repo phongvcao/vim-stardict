@@ -1,5 +1,5 @@
 #=============================================================================
-# FILE: bash/stardict.sh
+# FILE: bindings/bash/stardict.sh
 # AUTHOR: Phong V. Cao <phongvcao@phongvcao.com>
 # License: MIT license {{{
 # Permission is hereby granted, free of charge, to any person obtaining
@@ -31,16 +31,20 @@ export STARDICT_WORD_MEANING="\033[0;34m"
 export STARDICT_WORD_EXAMPLE="\033[0;33m"
 export STARDICT_DICT_NAME="\033[0;95m"
 
+if [[ -z ${STARDICT_DIR} ]]; then
+    export STARDICT_DIR="${HOME}/.vim/bundle/vim-stardict"
+fi
+
 
 function stardict() {
 for arg in "$@"; do
-    $( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../python && pwd)/stardict.py "${arg}"
+    "${STARDICT_DIR}"/python/stardict.py "${arg}"
 done
 }
 
 
 function vstardict() {
-PYSCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../python && pwd)
+PYSCRIPT_DIR="${STARDICT_DIR}"/python
 PYTHON_COMMAND="import sys; sys.path.insert(0, '"${PYSCRIPT_DIR}"')"
 VIM_COMMAND="setlocal buftype=nofile bufhidden=hide noswapfile readonly filetype=stardict"
 

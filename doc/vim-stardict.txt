@@ -175,9 +175,19 @@ Default: 1
 In order to use this plugin for Bash also, you need to configure your |.bashrc|
 similar to the following (supposed you use |Vundle| to manage your plugins):
 
-    # Source the stardict.sh file in the vim-stardict installation directory
-	if [[ -f ${HOME}/.vim/bundle/vim-stardict/bash/stardict.sh ]]; then
-		source ${HOME}/.vim/bundle/vim-stardict/bash/stardict.sh
+    # Export vim-stardict installation directory
+    # NOTE: Only do this if your vim-stardict installation directory is other
+    # than ${HOME}/.vim/bundle/vim-stardict. In other words, uncomment these
+    # lines if you are not using Vundle, Pathogen or NeoBundle to manage your
+    # Vim plugins:
+    export STARDICT_DIR="{HOME}/.vim/bundle/vim-stardict"
+
+	# For Bash: Source the stardict.sh file in the vim-stardict installation
+    # directory.
+    # For Zsh: The path to the stardict.zsh file is
+    # "${HOME}"/.vim/bundle/vim-stardict/bindings/zsh/stardict.zsh
+    if [[ -f "${HOME}"/.vim/bundle/vim-stardict/bindings/bash/stardict.sh ]]; then
+        source "${HOME}"/.vim/bundle/vim-stardict/bindings/bash/stardict.sh
 	fi
 
 	# To avoid typing the long & daunting 'stardict' & 'vstardict' commands,
@@ -282,6 +292,11 @@ request:
 
 ==============================================================================
 *10.Changelog*                                          *vim-stardict-changelog*
+
+|v0.4.0|
+    * Added support for zsh
+    * Added custom $STARDICT_DIR variable to let users specify vim-stardict
+    installation directory
 
 |v0.3.3|
     * Fixed wrong highlighting of words' examples
