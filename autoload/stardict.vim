@@ -112,22 +112,3 @@ def GetDefinitionInner(argsStr):
     return stardict.getDefinition(argsStr)
 EOF
 endif
-
-function! stardict#SourceSyntaxFile()
-    let l:syntax_file_0 = '~/.vim/bundle/stardict/syntax/stardict.vim'
-    let l:syntax_file_1 = '~/.vim/plugin/syntax/stardict.vim'
-    let l:syntax_file_2 = '/usr/share/vim/vimfiles/syntax/stardict.vim'
-
-    if filereadable(expand(l:syntax_file_0))
-        silent! execute 'source ' . l:syntax_file_0
-        let g:stardict_syntax_file = l:syntax_file_0
-
-    elseif filereadable(expand(l:syntax_file_1))
-        silent! execute 'source ' . l:syntax_file_1
-        let g:stardict_syntax_file = l:syntax_file_1
-
-    elseif filereadable(expand(l:syntax_file_2))
-        silent! execute 'source ' . l:syntax_file_2
-        let g:stardict_syntax_file = l:syntax_file_2
-    endif
-endfunction

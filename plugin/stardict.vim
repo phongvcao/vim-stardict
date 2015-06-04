@@ -40,10 +40,6 @@ if !exists('g:stardict_prefer_python3')
     let g:stardict_prefer_python3 = has('python3')
 endif
 
-augroup StarDictFileTypeDetect
-    autocmd! Syntax call stardict#SourceSyntaxFile()
-augroup END
-
 " Map :StarDict command to stardict#StarDict() function
 command! -nargs=* StarDict call stardict#StarDict(<f-args>)
 command! -nargs=* StarDictCursor call stardict#StarDict(expand('<cword>'))
