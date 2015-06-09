@@ -117,7 +117,6 @@ You can tweak the behavior of vim-stardict by setting a few variables in your
 
 	let g:stardict_split_size = 20
 	let g:stardict_split_horizontal = 1
-    let g:stardict_prefer_python3 = 0
 
     " OPTIONAL: You can change the colors of output of vim-stardict inside Vim
 	" as follow (see below for the comprehensive list of highlight group):
@@ -155,19 +154,6 @@ vim-stardict split.
 	* If set to 0, vim-stardict will be opened in a |:vplit|
 
 Default: 1
-
------------------------------------------------------------------------------
-*4.1.3* *g:stardict_prefer_python3*                     *stardict_prefer_python3*
-
-This option specify whether vim-stardict should use Python 2 or Python 3. If
-your Vim is compiled with +python3 support, you don't have to set this variable
-as it defaults to 1. Otherwise, if your Vim is compiled with Python 2
-support only (+python), add this to your |.vimrc| file:
-
-    let g:stardict_prefer_python3 = 0
-
-Default: 1
-
 
 -----------------------------------------------------------------------------
 *4.2* *Bash-Zsh-Configuration*                              *bash-zsh-configuration*

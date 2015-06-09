@@ -30,7 +30,7 @@ let s:stardict_buf_count = 0
 
 
 function! s:SetPythonPath() abort
-    if (g:stardict_prefer_python3) || has('python3')
+    if has('python3')
         python3 import sys
         python3 import vim
         execute 'python3 sys.path.insert(0, "' . s:script_folder_path . '/../python")'
@@ -86,7 +86,7 @@ function! stardict#GetDefinition(...)
 
     let l:argsStr = join(a:000, '\\ ')
 
-    if (g:stardict_prefer_python3) || has('python3')
+    if has('python3')
         python3 definition = GetDefinitionInner(vim.eval('a:000'))
         let l:definition = py3eval('definition')
     elseif has('python')
@@ -97,18 +97,20 @@ function! stardict#GetDefinition(...)
     return l:definition
 endfunction
 
-if (g:stardict_prefer_python3)
+if has('python3')
 python3 << EOF
 def GetDefinitionInner(argsStr):
     import stardict
 
     return stardict.getDefinition(argsStr)
 EOF
-else
+elseif has('python')
 python << EOF
 def GetDefinitionInner(argsStr):
     import stardict
 
     return stardict.getDefinition(argsStr)
 EOF
+else
+    echom 'vim-stardict requires your Vim to be compiled with +python or +python3 option!'
 endif

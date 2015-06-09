@@ -116,11 +116,6 @@ Sample configuration for your `.vimrc` (more in the official documentation)
     " vim-stardict split is a :vsplit (or :split)
 	let g:stardict_split_size = 20
 
-	" This option should only be set if your Vim is compiled with +python
-	" and -python3 options (in other words, if your Vim doesn't support
-	" Python 3):
-	" let g:stardict_prefer_python3 = 0
-
 	" Map vim-stardict's commands
 	" Ready for typing the word in
     nnoremap <leader>sw :StarDict<Space>

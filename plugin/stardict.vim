@@ -36,10 +36,6 @@ if !exists('g:stardict_split_horizontal')
     let g:stardict_split_horizontal = 1
 endif
 
-if !exists('g:stardict_prefer_python3')
-    let g:stardict_prefer_python3 = has('python3')
-endif
-
 " Map :StarDict command to stardict#StarDict() function
 command! -nargs=* StarDict call stardict#StarDict(<f-args>)
 command! -nargs=* StarDictCursor call stardict#StarDict(expand('<cword>'))
