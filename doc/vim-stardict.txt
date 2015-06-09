@@ -280,6 +280,11 @@ request:
 ==============================================================================
 *10.Changelog*                                          *vim-stardict-changelog*
 
+|v0.4.1|
+    * Fixed default Python 3 option
+    * Removed syntax file sourcing
+    * Removed g:stardict_prefer_python3 option
+
 |v0.4.0|
     * Added support for Zsh
     * Added custom $STARDICT_DIR variable to let users specify vim-stardict
