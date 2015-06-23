@@ -30,6 +30,7 @@ export STARDICT_WORD_TYPE="\033[0;32m"
 export STARDICT_WORD_MEANING="\033[0;34m"
 export STARDICT_WORD_EXAMPLE="\033[0;33m"
 export STARDICT_DICT_NAME="\033[0;95m"
+export STARDICT_PYTHON_PATH=""
 
 if [[ -z ${STARDICT_DIR} ]]; then
     export STARDICT_DIR="${HOME}/.vim/bundle/vim-stardict"
@@ -38,7 +39,11 @@ fi
 
 function stardict() {
 for arg in "$@"; do
-    "${STARDICT_DIR}"/python/stardict.py "${arg}"
+    if [[ -n "${STARDICT_PYTHON_PATH}" ]]; then
+        "${STARDICT_PYTHON_PATH}" "${STARDICT_DIR}"/python/stardict.py "${arg}"
+    else
+        "${STARDICT_DIR}"/python/stardict.py "${arg}"
+    fi
 done
 }
 
