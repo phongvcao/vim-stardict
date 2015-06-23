@@ -195,8 +195,8 @@ Documentation
 
 Contributors
 ============
-* Please read [CONTRIBUTING.md]()
-* See [vim-stardict contributors](https://github.com/phongvcao/vim-stardict/graphs/contributors)
+* Please read [CONTRIBUTING.md](https://github.com/phongvcao/vim-stardict/blob/master/CONTRIBUTING.md) before making your Pull Requests
+* See [vim-stardict contributors](https://github.com/phongvcao/vim-stardict/graphs/contributors) for the list of contributors
 
 *Thank you to you all!*
 
