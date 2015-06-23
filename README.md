@@ -11,7 +11,7 @@ Command-Line Version (SDCV), **vim-stardict** takes advantage of Vim syntax
 highlighting and some basic regexes to present the words' definitions to the
 users in an organized and user-friendly way.
 
-The plugin was inspired and originally a fork of
+The plugin was inspired by and originally a fork of
 [chusiang/vim-sdcv](https://github.com/chusiang/vim-sdcv).
 
 

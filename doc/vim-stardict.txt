@@ -299,7 +299,7 @@ request:
 |v0.4.0|
     * Added support for Zsh
     * Added custom $STARDICT_DIR variable to let users specify vim-stardict
-    installation directory
+      installation directory
 
 |v0.3.3|
     * Fixed wrong highlighting of words' examples
