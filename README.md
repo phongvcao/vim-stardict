@@ -171,9 +171,9 @@ the documentation) (supposed you use [Vundle][3] to manage your plugins):
 	# export STARDICT_DICT_NAME="\033[0;95m"                # Defaut value
 
     # OPTIONAL: You can change the path to the python executable that
-    # vim-stardict uses for Bash/Zsh lookup (which is "/usr/bin/env python"
-    # by default)
-	# export STARDICT_PYTHON_PATH="/usr/bin/env python"     # Defaut value
+    # vim-stardict uses for Bash/Zsh lookup (which is "/usr/bin/python"
+    # by default).
+	# export STARDICT_PYTHON_PATH="/usr/bin/python"     # Defaut value
 ```
 
 **For the full list of color codes in Bash and Zsh**, you can consult [this link][4]
