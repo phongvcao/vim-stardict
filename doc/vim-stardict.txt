@@ -288,6 +288,7 @@ request:
     * Replaced /usr/bin/python with /usr/bin/env python for stardict.py
     * Added STARDICT_PYTHON_PATH variable to let users specify the python
       executable they want to use to execute stardict.py
+    * Added CONTRIBUTING.md
 
 |v0.4.1|
     * Fixed default Python 3 option
