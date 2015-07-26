@@ -140,7 +140,7 @@ Sample configuration for your `.vimrc` (more in the official documentation)
 Sample configuration for your `.bashrc` (`.zshrc` is similar - please consult
 the documentation) (supposed you use [Vundle][3] to manage your plugins):
 
-```bash
+```sh
     # Export vim-stardict installation directory
     # NOTE: Only do this if your vim-stardict installation directory is other
     # than ${HOME}/.vim/bundle/vim-stardict. In other words, uncomment these
