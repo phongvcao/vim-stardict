@@ -31,11 +31,11 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <p>Project maintained by <a href="http://phongvcao.com/" target="_blank">Phong V.
-Cao</a></p>
-
-<h1>
+        <h1>
 <a id="vim-stardict" class="anchor" href="#vim-stardict" aria-hidden="true"><span class="octicon octicon-link"></span></a>vim-stardict</h1>
+
+<p>Project maintained by <a href="http://phongvcao.com/" target="_blank">Phong V.
+Cao</a></p>
 
 <p>A Vim plugin for looking up meaning of words inside Vim, Bash and Zsh using the
 <strong>StarDict Command-Line Version (SDCV)</strong> dictionary program.</p>
@@ -143,8 +143,15 @@ spaces-in-between):</p>
 <pre><code>:StarDictCursor
 </code></pre>
 
+<p>You can pass arguments of command-line <code>sdcv</code> to <code>:StarDict</code> and <code>:StarDictCursor</code>
+commands in Vim:</p>
+
+<pre><code>:StarDict first_word "second word" -u "my_dictionary" --data-dir /my/data/dir
+:StarDictCursor -u "my_dictionary" --data-dir /my/data/dir
+</code></pre>
+
 <h2>
-<a id="2-bash" class="anchor" href="#2-bash" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Bash:</h2>
+<a id="2-bash-and-zsh" class="anchor" href="#2-bash-and-zsh" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Bash and Zsh:</h2>
 
 <p>To lookup the meaning of a word with no-space-in-between:</p>
 
@@ -170,6 +177,13 @@ stardict "first word" 'second word'
 <pre><code>vstardict first_word second_word "third word" 'fourth word'
 </code></pre>
 
+<p>You can pass arguments of command-line <code>sdcv</code> to <code>stardict</code> and <code>vstardict</code>
+commands in Bash and Zsh:</p>
+
+<pre><code>stardict first_word "second word" -u "my_dictionary" --data-dir /my/data/dir
+vstardict 'first word' -u "my_dictionary" --data-dir /my/data/dir
+</code></pre>
+
 <h1>
 <a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h1>
 
@@ -178,7 +192,7 @@ stardict "first word" 'second word'
 
 <p>Sample configuration for your <code>.vimrc</code> (more in the official documentation)</p>
 
-<div class="highlight highlight-vim"><pre><span class="pl-c">    " Make vim-stardict split open in a :split (default value)</span>
+<div class="highlight highlight-source-viml"><pre><span class="pl-c">    " Make vim-stardict split open in a :split (default value)</span>
     <span class="pl-c1">let</span> <span class="pl-smi">g:stardict_split_horizontal</span> = <span class="pl-c1">1</span>
 
 <span class="pl-c">    " Set vim-stardict split width (or height) to 20 based on whether</span>
@@ -204,12 +218,12 @@ stardict "first word" 'second word'
 <p><strong>For the full list of highlight groups in Vim</strong>, you can consult <a href="http://vimdoc.sourceforge.net/htmldoc/syntax.html#group-name">:help group-name</a></p>
 
 <h2>
-<a id="2-bash-and-zsh" class="anchor" href="#2-bash-and-zsh" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Bash and Zsh:</h2>
+<a id="2-bash-and-zsh-1" class="anchor" href="#2-bash-and-zsh-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Bash and Zsh:</h2>
 
 <p>Sample configuration for your <code>.bashrc</code> (<code>.zshrc</code> is similar - please consult
 the documentation) (supposed you use <a href="https://github.com/gmarik/vundle">Vundle</a> to manage your plugins):</p>
 
-<div class="highlight highlight-bash"><pre>    <span class="pl-c"># Export vim-stardict installation directory</span>
+<div class="highlight highlight-source-shell"><pre>    <span class="pl-c"># Export vim-stardict installation directory</span>
     <span class="pl-c"># NOTE: Only do this if your vim-stardict installation directory is other</span>
     <span class="pl-c"># than ${HOME}/.vim/bundle/vim-stardict. In other words, uncomment these</span>
     <span class="pl-c"># lines if you are not using Vundle, Pathogen or NeoBundle to manage your</span>
