@@ -79,8 +79,15 @@ To lookup the meaning of a word under-the-cursor:
 
 	:StarDictCursor
 
+You can pass arguments of command-line `sdcv` to `:StarDict` and `:StarDictCursor`
+commands in Vim:
 
-## 2. Bash:
+    :StarDict first_word "second word" -u "my_dictionary" --data-dir /my/data/dir
+    :StarDictCursor -u "my_dictionary" --data-dir /my/data/dir
+
+
+
+## 2. Bash and Zsh:
 To lookup the meaning of a word with no-space-in-between:
 
 	stardict random_word_with_no_spaces
@@ -100,6 +107,12 @@ spaces-in-between):
 To view the meaning of word in Vim from Bash or Zsh:
 
 	vstardict first_word second_word "third word" 'fourth word'
+
+You can pass arguments of command-line `sdcv` to `stardict` and `vstardict`
+commands in Bash and Zsh:
+
+    stardict first_word "second word" -u "my_dictionary" --data-dir /my/data/dir
+    vstardict 'first word' -u "my_dictionary" --data-dir /my/data/dir
 
 
 Configuration

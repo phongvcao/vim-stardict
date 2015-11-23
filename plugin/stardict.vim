@@ -38,4 +38,4 @@ endif
 
 " Map :StarDict command to stardict#StarDict() function
 command! -nargs=* StarDict call stardict#StarDict(<f-args>)
-command! -nargs=* StarDictCursor call stardict#StarDict(expand('<cword>'))
+command! -nargs=* StarDictCursor call stardict#StarDict(<f-args>, expand('<cword>'))
