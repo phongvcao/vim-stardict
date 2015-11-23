@@ -38,13 +38,11 @@ fi
 
 
 function stardict() {
-for arg in "$@"; do
-    if [[ -n "${STARDICT_PYTHON_PATH}" ]]; then
-        "${STARDICT_PYTHON_PATH}" "${STARDICT_DIR}"/python/stardict.py "${arg}"
-    else
-        "${STARDICT_DIR}"/python/stardict.py "${arg}"
-    fi
-done
+if [[ -n "${STARDICT_PYTHON_PATH}" ]]; then
+    "${STARDICT_PYTHON_PATH}" "${STARDICT_DIR}"/python/stardict.py "$@"
+else
+    "${STARDICT_DIR}"/python/stardict.py "$@"
+fi
 }
 
 
@@ -56,9 +54,11 @@ VIM_COMMAND="setlocal buftype=nofile bufhidden=hide noswapfile readonly filetype
 FINAL_DEFINITIONS=""
 ARGS_LIST=""
 
-for arg in "$@"; do
-    FINAL_DEFINITIONS+="$(python -c "${PYTHON_COMMAND}; import stardict; print(stardict.getDefinition([['$arg']]))")""\n""\n"
-done
+if [[ -n "${STARDICT_PYTHON_PATH}" ]]; then
+    FINAL_DEFINITIONS+="$(${STARDICT_PYTHON_PATH} -c "${PYTHON_COMMAND}; import stardict; print(stardict.getDefinition([['$@']]))")""\n""\n"
+else
+    FINAL_DEFINITIONS+="$(python -c "${PYTHON_COMMAND}; import stardict; print(stardict.getDefinition([['$@']]))")""\n""\n"
+fi
 
 echo -e "${FINAL_DEFINITIONS}" | vim -c "${VIM_COMMAND}" -
 }

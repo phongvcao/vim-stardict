@@ -285,6 +285,10 @@ request:
 ==============================================================================
 *10.Changelog*                                          *vim-stardict-changelog*
 
+|v0.4.4|
+    * Fixed stardict.py Python piping issue that prevents sdcv -u from getting
+      the definition
+
 |v0.4.3|
     * Switched back to /usr/bin/python instead of /usr/bin/env python
 
