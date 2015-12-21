@@ -76,10 +76,6 @@ def getDefinition(argsListList, caller="vim"):
     argsListList[0].insert(0, "-n")
     argsListList[0].insert(0, "sdcv")
 
-    f = open("/home/phongvcao/vim-stardict-output.txt", "w")
-    f.write(str(argsListList))
-    f.close()
-
     definition = Popen(" ".join(argsListList[0]), shell=True, stdout=PIPE)\
             .stdout.read()
     encoding = locale.getdefaultlocale()[1]
