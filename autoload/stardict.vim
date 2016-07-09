@@ -79,12 +79,48 @@ function! stardict#StarDict(...)
 endfunction
 
 
+function! stardict#GetArgsList(orgArgs)
+    if (g:stardict_use_dict)
+        if ((index(a:orgArgs, '-u') == -1) && (index(a:orgArgs, '--use-dict') == -1))
+            let a:orgArgs = insert(a:orgArgs, '--use-dict=' . g:stardict_use_dict, 0)
+        endif
+    endif
+
+    if g:stardict_utf8_output
+        if (index(a:orgArgs, '-0') == -1) && (index(a:orgArgs, '--utf8-output') == -1)
+            let a:orgArgs = insert(a:orgArgs, '--utf8-output', 0)
+        endif
+    endif
+
+    if g:stardict_utf8_input
+        if (index(a:orgArgs, '-1') == -1) && (index(a:orgArgs, '--utf8-input') == -1)
+            let a:orgArgs = insert(a:orgArgs, '--utf8-input', 0)
+        endif
+    endif
+
+    if g:stardict_data_dir
+        if (index(a:orgArgs, '-2') == -1) && (index(a:orgArgs, '--data-dir') == -1)
+            let a:orgArgs = insert(a:orgArgs, '--data-dir=' . g:stardict_data_dir, 0)
+        endif
+    endif
+
+    echom join(a:orgArgs, '\\ ')
+
+    return a:orgArgs
+endfunction
+
+
 function! stardict#GetDefinition(...)
     if s:SetPythonPath() != 1
         return "Cannot set ${PATH} variable!"
     endif
 
+    let l:args=stardict#GetArgsList(a:000)
+    " let l:argsStr = join(l:args, '\\ ')
     let l:argsStr = join(a:000, '\\ ')
+    " echom a:000
+    " echom l:args
+    " echom l:argsStr
 
     if has('python3')
         python3 definition = GetDefinitionInner(vim.eval('a:000'))
