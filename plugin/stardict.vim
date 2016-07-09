@@ -36,6 +36,27 @@ if !exists('g:stardict_split_horizontal')
     let g:stardict_split_horizontal = 1
 endif
 
+if !exists('g:stardict_use_dict')
+    let g:stardict_use_dict = ''
+endif
+
+if !exists('g:stardict_utf8_output')
+    let g:stardict_utf8_output = 1
+endif
+
+if !exists('g:stardict_utf8_input')
+    let g:stardict_utf8_input = 1
+endif
+
+if !exists('g:stardict_data_dir')
+    let g:stardict_data_dir = '/usr/share/stardict/dic'
+endif
+
+if !exists('g:stardict_colorize_output')
+    let g:stardict_colorize_output = 1
+endif
+
 " Map :StarDict command to stardict#StarDict() function
 command! -nargs=* StarDict call stardict#StarDict(<f-args>)
-command! -nargs=* StarDictCursor call stardict#StarDict(<f-args>, expand('<cword>'))
+" command! -nargs=* StarDictCursor call stardict#StarDict(<f-args>, expand('<cword>'))
+command! -nargs=* StarDictCursor call stardict#StarDict(<f-args> expand('<cword>'))

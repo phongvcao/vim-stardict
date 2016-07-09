@@ -1,3 +1,4 @@
 /doc/tags
 /python/__pycache__/
 /python/.ropeproject/
+*.pyc
